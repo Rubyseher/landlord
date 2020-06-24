@@ -27,7 +27,6 @@ class Main extends React.Component {
 
 		let expected = [], due = [], dueTotal = 0;
 
-
 		paid.forEach((p,i) => {
 			if(DB[id].Renewal) {
 				if(DB[id].Renewal.length>0) {
@@ -58,18 +57,16 @@ class Main extends React.Component {
 					amount: due_i
 				})
 				dueTotal += due_i
-				
 			}
-			
 		});
-		console.log(due);
+		// console.log(due);
 		if (dueTotal==0)
 			return 1;
 		else return 0;
 	}
 
 	rentColor=(id,type)=>{
-		
+
 		switch(this.checkRent(id))
 		{
 			case -1:return (type=="icon")?"fa fa-check":"#e81717";
@@ -84,11 +81,14 @@ class Main extends React.Component {
 	checkRenewal=(id)=>
 	{
 		let r=DB[id].Renewal
-		if(r)
-			if(r.length>0) 
-				return moment(r[r.length-1]["Date"],"MM/DD/YY").add(11,"M").format ("DD/MM/YY")
-		else return moment(DB[id]["Start Date"],"MM/DD/YY").add(11,"M").format ("DD/MM/YY")
-
+		if(r!=undefined)
+			if(r.length>0){
+				let endDate = moment(r[r.length-1]["Date"],"M/D/YY", true).add(11,"M")
+				return endDate.format("DD/MM/YY")
+			}
+		else {
+			let endDate = moment(DB[id]["Start Date"],"M/D/YY", true).add(11,"M")
+			return endDate.format("DD/MM/YY")}
 	}
 	render () {
 		if(this.state.id!=null)
@@ -129,8 +129,8 @@ class Main extends React.Component {
 			Object.keys(DB).map((d,i) =>
 			(
 				<div>
-				<p>{DB[d].Name}</p>
-				<p>{this.checkRenewal(d)}</p> <br/>
+				<p><b>{DB[d].Name}: </b></p>
+				<p>{console.log(this.checkRenewal(d))}</p><br/>
 				</div>
 			)
 		   )

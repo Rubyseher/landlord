@@ -42,7 +42,7 @@
 		"Months": 11,
 		"Advance": 50000,
 		"Rent": 8000,
-		"Renewals": [{
+		"Renewal": [{
 				"Date": "2/15/19",
 				"Months": 11
 			},
