@@ -80,15 +80,17 @@ class Main extends React.Component {
 
 	checkRenewal=(id)=>
 	{
-		let r=DB[id].Renewal, endDate
+		let r=DB[id].Renewal, endDate,req
 		if(r!=undefined && r.length>0) {
 			endDate = moment(r[r.length-1]["Date"],"M/D/YY", true).add(11,"M")
-			return endDate.format("DD/MM/YY")
+			req=moment().add(3,"M").isSame(endDate,"M")
+			return req?endDate.format("DD/MM/YY"):null;
 		}
 
 		else {
 			endDate = moment(DB[id]["Start Date"],"M/D/YY", true).add(11,"M")
-			return endDate.format("DD/MM/YY")
+				req=moment().add(3,"M").isSame(endDate,"M")
+			return req?endDate.format("DD/MM/YY"):null;
 		}
 	}
 	render () {
@@ -129,7 +131,9 @@ class Main extends React.Component {
 			{
 			Object.keys(DB).map((d,i) =>
 			(
-				<p><b>{DB[d].Name}:</b> {this.checkRenewal(d)}<br/><br/></p>
+				this.checkRenewal(d)?
+				<p><b>{DB[d].Name}:</b> {this.checkRenewal(d)}<br/><br/></p>:null
+
 			)
 		   )
 		}
