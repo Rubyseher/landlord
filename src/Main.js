@@ -80,11 +80,16 @@ class Main extends React.Component {
 
 	checkRenewal=(id)=>
 	{
-		let r=DB[id].Renewal
-		if(r!=undefined && r.length>0)
-			return moment(r[r.length-1]["Date"],"M/D/YY", true).add(11,"M").format("DD/MM/YY")
-		else
-			return moment(DB[id]["Start Date"],"M/D/YY", true).add(11,"M").format("DD/MM/YY")
+		let r=DB[id].Renewal, endDate
+		if(r!=undefined && r.length>0) {
+			endDate = moment(r[r.length-1]["Date"],"M/D/YY", true).add(11,"M")
+			return endDate.format("DD/MM/YY")
+		}
+
+		else {
+			endDate = moment(DB[id]["Start Date"],"M/D/YY", true).add(11,"M")
+			return endDate.format("DD/MM/YY")
+		}
 	}
 	render () {
 		if(this.state.id!=null)
