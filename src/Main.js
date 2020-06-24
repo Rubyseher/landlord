@@ -85,10 +85,10 @@ class Main extends React.Component {
 		<div class="nameList">
 		{
 		  Object.keys(DB).map((d,i) => (
-			  (d[0] == '8') ? <div key={d} class="person" onClick={() => this.detailsRedirect(d)} style={{"margin-right": (i%3 == 2) ? "0%" : "10.5%"}}>
+			  (d[0] == '8') ? <div key={d} class="person" onClick={() => this.detailsRedirect(d)} style={{marginRight: (i%3 == 2) ? "0%" : "10%"}}>
 			   <div class="circle" style={{ backgroundColor: this.rentColor(d)}}><i class={this.rentColor(d,"icon")}></i></div>
 			   <div class="name">
-				   {DB[d].Nickname ? DB[d].Nickname : DB[d].Name.split(' ')[0]}
+				   {d.split('_')[1] == '0' ? 'G' : d.split('_')[1]}F {DB[d].Nickname ? DB[d].Nickname : DB[d].Name.split(' ')[0]}
 			   </div>
 			  </div> : null
 	  		))
@@ -98,7 +98,7 @@ class Main extends React.Component {
 		<div class="nameList">
 		{
 		  Object.keys(DB).map((d,i) => (
-			  (d[0] == '6') ? <div key={d} class="person" onClick={() => this.detailsRedirect(d)} style={{"margin-right": (i%3 == 2) ? "0%" : "10.5%"}}>
+			  (d[0] == '6') ? <div key={d} class="person" onClick={() => this.detailsRedirect(d)} style={{marginRight: (i%3 == 2) ? "0%" : "10%"}}>
 			  <div class="circle" style={{ backgroundColor:this.rentColor(d) }}><i class={this.rentColor(d,"icon")}></i></div>
 			   <div class="name">
 				   {DB[d].Nickname ? DB[d].Nickname : DB[d].Name.split(' ')[0]}
@@ -108,11 +108,11 @@ class Main extends React.Component {
 		}
 		</div>
 		<h2>Upcoming Renewals</h2>
-		<div class="nameList" style={{display: "block"}}>
+		<div class="nameList" style={{display: "block", alignItems: "left"}}>
 		{
-			Object.keys(DB).map((d,i) => (
+			Object.keys(DB).map(d => (
 				this.checkRenewal(d)?
-				<p><b>{DB[d].Name}:</b> {this.checkRenewal(d)}<br/><br/></p>:null
+				<p key={d}><b>{DB[d].Name}:</b> {this.checkRenewal(d)}<br/></p>:null
 			))
 		}
 		</div>
