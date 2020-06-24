@@ -34,7 +34,7 @@ class Main extends React.Component {
 					else expected.push(DB[id].Rent*(1.05*Math.floor(period)));
 				}
 			} else expected.push(DB[id].Rent);
-			if(p.Month != paid[0].Month+i) {
+			if(p.Month !== paid[0].Month+i) {
 				let diff = p.Month - paid[i-1].Month - 1;
 
 				for(let i=diff; i>0; i--) {
@@ -46,7 +46,7 @@ class Main extends React.Component {
 				}
 			}
 			let due_i = expected[i]-p['Amount']
-			if(due_i!=0){
+			if(due_i!==0){
 				due.push({
 					month: p.Month,
 					date: p.Date,
@@ -55,29 +55,26 @@ class Main extends React.Component {
 				dueTotal += due_i
 			}
 		});
-		return dueTotal==0 ? 1 : 0
+		return dueTotal===0 ? 1 : 0
 	}
 
 	rentColor=(id,type)=>{
 		switch(this.checkRent(id))
 		{
-			case -1:return (type=="icon")?"fa fa-check":"#49a652";
-			break;
-			case 0:return (type=="icon")?"fa fa-exclamation":"#f5cd07";
-			break;
-			case 1: return (type=="icon")?"fa fa-remove":"#e81717";
-			break;
+			case 0: return (type==="icon")?"fa fa-exclamation":"#f5cd07";
+			case 1: return (type==="icon")?"fa fa-remove":"#e81717";
+			default: return (type==="icon")?"fa fa-check":"#49a652";
 		}
 	}
 
 	checkRenewal=(id)=>
 	{
 		let r=DB[id].Renewal
-		let endDate = moment((r!=undefined && r.length>0) ? r[r.length-1]["Date"] : DB[id]["Start Date"],"M/D/YY", true).add(11,"M")
+		let endDate = moment((r!==undefined && r.length>0) ? r[r.length-1]["Date"] : DB[id]["Start Date"],"M/D/YY", true).add(11,"M")
 		return endDate.isBetween(moment(),moment().add(3,"M"),"M") ? endDate.format("Do MMMM, YYYY") : null;
 	}
 	render () {
-		if(this.state.id!=null)
+		if(this.state.id!==null)
 			return <Details id={this.state.id}/>
 		return(
 		<div class="container">
@@ -85,10 +82,10 @@ class Main extends React.Component {
 		<div class="nameList">
 		{
 		  Object.keys(DB).map((d,i) => (
-			  (d[0] == '8') ? <div key={d} class="person" onClick={() => this.detailsRedirect(d)} style={{marginRight: (i%3 == 2) ? "0%" : "10%"}}>
+			  (d[0] === '8') ? <div key={d} class="person" onClick={() => this.detailsRedirect(d)} style={{marginRight: (i%3 === 2) ? "0%" : "5%"}}>
 			   <div class="circle" style={{ backgroundColor: this.rentColor(d)}}><i class={this.rentColor(d,"icon")}></i></div>
 			   <div class="name">
-				   {d.split('_')[1] == '0' ? 'G' : d.split('_')[1]}F {DB[d].Nickname ? DB[d].Nickname : DB[d].Name.split(' ')[0]}
+				   {d.split('_')[1] === '0' ? 'G' : d.split('_')[1]}F {DB[d].Nickname ? DB[d].Nickname : DB[d].Name.split(' ')[0]}
 			   </div>
 			  </div> : null
 	  		))
@@ -98,10 +95,10 @@ class Main extends React.Component {
 		<div class="nameList">
 		{
 		  Object.keys(DB).map((d,i) => (
-			  (d[0] == '6') ? <div key={d} class="person" onClick={() => this.detailsRedirect(d)} style={{marginRight: (i%3 == 2) ? "0%" : "10%"}}>
+			  (d[0] === '6') ? <div key={d} class="person" onClick={() => this.detailsRedirect(d)} style={{marginRight: (i%3 === 2) ? "0%" : "5%"}}>
 			  <div class="circle" style={{ backgroundColor:this.rentColor(d) }}><i class={this.rentColor(d,"icon")}></i></div>
 			   <div class="name">
-				   {DB[d].Nickname ? DB[d].Nickname : DB[d].Name.split(' ')[0]}
+				   {d.split('_')[1] === '0' ? 'G' : d.split('_')[1]}F {DB[d].Nickname ? DB[d].Nickname : DB[d].Name.split(' ')[0]}
 			   </div>
 			  </div> : null
 	  		))
