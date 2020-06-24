@@ -80,18 +80,9 @@ class Main extends React.Component {
 
 	checkRenewal=(id)=>
 	{
-		let r=DB[id].Renewal, endDate,req
-		if(r!=undefined && r.length>0) {
-			endDate = moment(r[r.length-1]["Date"],"M/D/YY", true).add(11,"M")
-			req=endDate.isBetween(moment(),moment().add(3,"M"),"M")
-			return req?endDate.format("DD/MM/YY"):null;
-		}
-
-		else {
-			endDate = moment(DB[id]["Start Date"],"M/D/YY", true).add(11,"M")
-			req=endDate.isBetween(moment(),moment().add(3,"M"),"M")
-			return req?endDate.format("DD/MM/YY"):null;
-		}
+		let r=DB[id].Renewal
+		let endDate = moment((r!=undefined && r.length>0) ? r[r.length-1]["Date"] : DB[id]["Start Date"],"M/D/YY", true).add(11,"M")
+		return endDate.isBetween(moment(),moment().add(3,"M"),"M") ? endDate.format("Do MMMM, YYYY") : null;
 	}
 	render () {
 		if(this.state.id!=null)
@@ -133,7 +124,6 @@ class Main extends React.Component {
 			(
 				this.checkRenewal(d)?
 				<p><b>{DB[d].Name}:</b> {this.checkRenewal(d)}<br/><br/></p>:null
-
 			)
 		   )
 		}
