@@ -58,12 +58,38 @@ class Main extends React.Component {
 					amount: due_i
 				})
 				dueTotal += due_i
+				
 			}
+			
 		});
 		console.log(due);
-		console.log(dueTotal);
+		if (dueTotal==0)
+			return 1;
+		else return 0;
 	}
 
+	rentColor=(id,type)=>{
+		
+		switch(this.checkRent(id))
+		{
+			case -1:return (type=="icon")?"fa fa-check":"#e81717";
+			break;
+			case 0:return (type=="icon")?"fa fa-exclamation":"#f5cd07";
+			break;
+			case 1: return (type=="icon")?"fa fa-remove":"#49a652";
+			break;
+		}
+	}
+
+	checkRenewal=(id)=>
+	{
+		let r=DB[id].Renewal
+		if(r)
+			if(r.length>0) 
+				return moment(r[r.length-1]["Date"],"MM/DD/YY").add(11,"M").format ("DD/MM/YY")
+		else return moment(DB[id]["Start Date"],"MM/DD/YY").add(11,"M").format ("DD/MM/YY")
+
+	}
 	render () {
 		if(this.state.id!=null)
 			return <Details id={this.state.id}/>
@@ -75,7 +101,7 @@ class Main extends React.Component {
 		  Object.keys(DB).map((d,i) =>
 		  (
 			  (d[0] == '8') ? <div key={d} class="person" onClick={() => this.detailsRedirect(d)}>
-		   <div class="circle" style={{ backgroundColor: (DB[d]["Paid Rent"].length>0) ? "#49a652" : "#e81717"}}><i class={(DB[d]["Paid Rent"].length>0) ? "fa fa-check" : "fa fa-remove"}></i></div>
+		   <div class="circle" style={{ backgroundColor: this.rentColor(d)}}><i class={this.rentColor(d,"icon")}></i></div>
 		   <div class="name">
 			   {DB[d].Nickname ? DB[d].Nickname : DB[d].Name.split(' ')[0]}
 		   </div>
@@ -89,12 +115,25 @@ class Main extends React.Component {
 		  Object.keys(DB).map((d,i) =>
 		  (
 			  (d[0] == '6') ? <div key={d} class="person" onClick={() => this.detailsRedirect(d)}>
-			  <div class="circle" style={{ backgroundColor: (DB[d]["Paid Rent"].length>0) ? "#49a652" : "#e81717"}}><i class={(DB[d]["Paid Rent"].length>0) ? "fa fa-check" : "fa fa-remove"}></i></div>
+			  <div class="circle" style={{ backgroundColor:this.rentColor(d) }}><i class={this.rentColor(d,"icon")}></i></div>
 		   <div class="name">
 			   {DB[d].Nickname ? DB[d].Nickname : DB[d].Name.split(' ')[0]}
 		   </div>
 		  </div> : null)
 		  )
+		}
+		</div>
+		<h2> Upcoming renewal</h2>
+		<div class="nameList">
+			{
+			Object.keys(DB).map((d,i) =>
+			(
+				<div>
+				<p>{DB[d].Name}</p>
+				<p>{this.checkRenewal(d)}</p> <br/>
+				</div>
+			)
+		   )
 		}
 		</div>
 		</div>
