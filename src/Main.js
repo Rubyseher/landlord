@@ -83,7 +83,7 @@ class Main extends React.Component {
 		let r=DB[id].Renewal
 		if(r!=undefined && r.length>0)
 			return moment(r[r.length-1]["Date"],"M/D/YY", true).add(11,"M").format("DD/MM/YY")
-		else 
+		else
 			return moment(DB[id]["Start Date"],"M/D/YY", true).add(11,"M").format("DD/MM/YY")
 	}
 	render () {
@@ -120,14 +120,11 @@ class Main extends React.Component {
 		}
 		</div>
 		<h2> Upcoming renewal</h2>
-		<div class="nameList">
+		<div class="nameList" style={{display: "block"}}>
 			{
 			Object.keys(DB).map((d,i) =>
 			(
-				<div>
-				<p><b>{DB[d].Name}: </b></p>
-				<p>{this.checkRenewal(d)}</p><br/>
-				</div>
+				<p><b>{DB[d].Name}:</b> {this.checkRenewal(d)}<br/><br/></p>
 			)
 		   )
 		}
