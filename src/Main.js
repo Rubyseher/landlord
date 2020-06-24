@@ -11,7 +11,6 @@ class Main extends React.Component {
 		this.state = {
 			id: null
 		}
-		this.checkRent("86_3_1")
 	}
 
 	detailsRedirect = (id) => {
