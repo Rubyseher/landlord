@@ -69,11 +69,11 @@ class Main extends React.Component {
 
 		switch(this.checkRent(id))
 		{
-			case -1:return (type=="icon")?"fa fa-check":"#e81717";
+			case -1:return (type=="icon")?"fa fa-check":"#49a652";
 			break;
 			case 0:return (type=="icon")?"fa fa-exclamation":"#f5cd07";
 			break;
-			case 1: return (type=="icon")?"fa fa-remove":"#49a652";
+			case 1: return (type=="icon")?"fa fa-remove":"#e81717";
 			break;
 		}
 	}
@@ -83,13 +83,13 @@ class Main extends React.Component {
 		let r=DB[id].Renewal, endDate,req
 		if(r!=undefined && r.length>0) {
 			endDate = moment(r[r.length-1]["Date"],"M/D/YY", true).add(11,"M")
-			req=moment().add(3,"M").isSame(endDate,"M")
+			req=endDate.isBetween(moment(),moment().add(3,"M"),"M")
 			return req?endDate.format("DD/MM/YY"):null;
 		}
 
 		else {
 			endDate = moment(DB[id]["Start Date"],"M/D/YY", true).add(11,"M")
-				req=moment().add(3,"M").isSame(endDate,"M")
+			req=endDate.isBetween(moment(),moment().add(3,"M"),"M")
 			return req?endDate.format("DD/MM/YY"):null;
 		}
 	}
