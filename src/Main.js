@@ -117,7 +117,7 @@ class Main extends React.Component {
 		  )
 		}
 		</div>
-		<h2> Upcoming renewal</h2>
+		<h2>Upcoming Renewals</h2>
 		<div class="nameList" style={{display: "block"}}>
 			{
 			Object.keys(DB).map((d,i) =>
