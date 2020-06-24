@@ -24,7 +24,6 @@ class Main extends React.Component {
 		else if (DB[id]["Paid Rent"].length<1) return -1;
 
 		let paid = DB[id]["Paid Rent"].sort((a,b) => {return a.Month-b.Month})
-
 		let expected = [], due = [], dueTotal = 0;
 
 		paid.forEach((p,i) => {
@@ -34,9 +33,7 @@ class Main extends React.Component {
 					if(period<=1) expected.push(DB[id].Rent);
 					else expected.push(DB[id].Rent*(1.05*Math.floor(period)));
 				}
-			} else {
-				expected.push(DB[id].Rent);
-			}
+			} else expected.push(DB[id].Rent);
 			if(p.Month != paid[0].Month+i) {
 				let diff = p.Month - paid[i-1].Month - 1;
 
@@ -48,7 +45,6 @@ class Main extends React.Component {
 					dueTotal += expected[i]
 				}
 			}
-
 			let due_i = expected[i]-p['Amount']
 			if(due_i!=0){
 				due.push({
@@ -59,14 +55,10 @@ class Main extends React.Component {
 				dueTotal += due_i
 			}
 		});
-		// console.log(due);
-		if (dueTotal==0)
-			return 1;
-		else return 0;
+		return dueTotal==0 ? 1 : 0
 	}
 
 	rentColor=(id,type)=>{
-
 		switch(this.checkRent(id))
 		{
 			case -1:return (type=="icon")?"fa fa-check":"#49a652";
@@ -92,43 +84,39 @@ class Main extends React.Component {
 		<h2>Rent #86: {moment().subtract(1, 'months').format("MMM")} - {moment().format("MMM")}</h2>
 		<div class="nameList">
 		{
-		  Object.keys(DB).map((d,i) =>
-		  (
-			  (d[0] == '8') ? <div key={d} class="person" onClick={() => this.detailsRedirect(d)}>
-		   <div class="circle" style={{ backgroundColor: this.rentColor(d)}}><i class={this.rentColor(d,"icon")}></i></div>
-		   <div class="name">
-			   {DB[d].Nickname ? DB[d].Nickname : DB[d].Name.split(' ')[0]}
-		   </div>
-		  </div> : null)
-		  )
+		  Object.keys(DB).map((d,i) => (
+			  (d[0] == '8') ? <div key={d} class="person" onClick={() => this.detailsRedirect(d)} style={{"margin-right": (i%3 == 2) ? "0%" : "10.5%"}}>
+			   <div class="circle" style={{ backgroundColor: this.rentColor(d)}}><i class={this.rentColor(d,"icon")}></i></div>
+			   <div class="name">
+				   {DB[d].Nickname ? DB[d].Nickname : DB[d].Name.split(' ')[0]}
+			   </div>
+			  </div> : null
+	  		))
 		}
 		</div>
 		<h2>Rent #6: {moment().subtract(1, 'months').format("MMM")} - {moment().format("MMM")}</h2>
 		<div class="nameList">
 		{
-		  Object.keys(DB).map((d,i) =>
-		  (
-			  (d[0] == '6') ? <div key={d} class="person" onClick={() => this.detailsRedirect(d)}>
+		  Object.keys(DB).map((d,i) => (
+			  (d[0] == '6') ? <div key={d} class="person" onClick={() => this.detailsRedirect(d)} style={{"margin-right": (i%3 == 2) ? "0%" : "10.5%"}}>
 			  <div class="circle" style={{ backgroundColor:this.rentColor(d) }}><i class={this.rentColor(d,"icon")}></i></div>
-		   <div class="name">
-			   {DB[d].Nickname ? DB[d].Nickname : DB[d].Name.split(' ')[0]}
-		   </div>
-		  </div> : null)
-		  )
+			   <div class="name">
+				   {DB[d].Nickname ? DB[d].Nickname : DB[d].Name.split(' ')[0]}
+			   </div>
+			  </div> : null
+	  		))
 		}
 		</div>
 		<h2>Upcoming Renewals</h2>
 		<div class="nameList" style={{display: "block"}}>
-			{
-			Object.keys(DB).map((d,i) =>
-			(
+		{
+			Object.keys(DB).map((d,i) => (
 				this.checkRenewal(d)?
 				<p><b>{DB[d].Name}:</b> {this.checkRenewal(d)}<br/><br/></p>:null
-			)
-		   )
+			))
 		}
 		</div>
-		</div>
+	</div>
 	)
 	}
 }
