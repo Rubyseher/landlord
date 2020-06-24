@@ -1,0 +1,40 @@
+.container {
+	padding: 5%;
+	padding-left: 5%;
+}
+.circle{
+	height: 60px;
+	width: 60px;
+  border-radius:35px;
+  -webkit-box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.51);
+box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.51);
+}
+
+.person {
+	margin: 5%;
+	margin-right: 8%;
+	margin-bottom: 2%;
+}
+
+.name{
+	margin-top: 10%;
+  font-size:14px;
+}
+.fa{
+  font-size: 28px;
+  position: relative;
+  margin-top: 25%;
+}
+
+.fa-check, .fa-remove {
+	color: #fff;
+}
+
+.nameList {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	-webkit-box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.51);
+box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.51);
+	padding: 5%;
+}
