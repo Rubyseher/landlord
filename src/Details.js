@@ -9,7 +9,17 @@ class Details extends React.Component {
         return(
     		<div id="container">
     		<h1>{DB[this.props.id].Name}</h1>
-        <table style="width:100%">
+        // <style>
+        // table, th, td {
+        //   border:2px solid black;
+        //   border-collapse: collapse;
+        // }
+        // th, td {
+        //   padding: 15px;
+        // }
+        // </style>
+        <table >
+          <tbody style="border: 1px solid black;">
           <tr>
           <th>Start Date:</th>
              <th>RR No:</th>
@@ -24,9 +34,11 @@ class Details extends React.Component {
              <td>{DB[this.props.id]["MR Code"]}</td>
              <td>{DB[this.props.id]["ID"]}</td>
            </tr>
+           </tbody>
           </table>
 
-          <table>
+        <table >
+          <tbody style="border: 1px solid black;">
           <tr>
             <th>Paid Rent:</th>
              <th>Month:</th>
@@ -41,9 +53,11 @@ class Details extends React.Component {
             </tr>
             )
             }
+             </tbody>
           </table>
 
-          <table>
+          <table >
+          <tbody style="border: 1px solid black;">
           <tr>
              <th>Renewal</th>
              <th>Month:</th>
@@ -57,6 +71,7 @@ class Details extends React.Component {
               </tr>
             ):null
               }
+              </tbody>
           </table>
           </div>
         )
