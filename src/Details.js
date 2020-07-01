@@ -9,38 +9,18 @@ class Details extends React.Component {
         return(
     		<div id="container">
     		<h1>{DB[this.props.id].Name}</h1>
-        // <style>
-        // table, th, td {
-        //   border:2px solid black;
-        //   border-collapse: collapse;
-        // }
-        // th, td {
-        //   padding: 15px;
-        // }
-        // </style>
-        <table >
-          <tbody style="border: 1px solid black;">
-          <tr>
-          <th>Start Date:</th>
-             <th>RR No:</th>
-             <th>Acc ID:</th>
-             <th>MR Code:</th>
-             <th>ID: </th>
-           </tr>
-           <tr>
-             <td>{DB[this.props.id]["Start Date"]}</td>
-             <td>{DB[this.props.id]["RR No"]}</td>
-             <td>{DB[this.props.id]["Acc ID"]}</td>
-             <td>{DB[this.props.id]["MR Code"]}</td>
-             <td>{DB[this.props.id]["ID"]}</td>
-           </tr>
-           </tbody>
-          </table>
 
-        <table >
-          <tbody style="border: 1px solid black;">
+             <p><b>Start Date:</b>{DB[this.props.id]["Start Date"]}</p>
+             <p><b>RR No:</b>{DB[this.props.id]["RR No"]}</p>
+             <p><b>Acc ID:</b>{DB[this.props.id]["Acc ID"]}</p>
+             <p><b>MR Code:</b>{DB[this.props.id]["MR Code"]}</p>
+             <p><b>ID:</b>{DB[this.props.id]["ID"]}</p>
+
+    <h3>Paid Rent:</h3>
+    <center>
+        <table>
           <tr>
-            <th>Paid Rent:</th>
+
              <th>Month:</th>
              <th>Date:</th>
              <th>Amount:</th>
@@ -53,26 +33,15 @@ class Details extends React.Component {
             </tr>
             )
             }
-             </tbody>
           </table>
+          </center>
 
-          <table >
-          <tbody style="border: 1px solid black;">
-          <tr>
-             <th>Renewal</th>
-             <th>Month:</th>
-             <th>Date:</th>
-          </tr>
+          <h3>Renewal Date:</h3>
              {DB[this.props.id]["Renewal"]?
                  DB[this.props.id]["Renewal"].map(p=>
-              <tr>
-              <td>{p.Month}</td>
-              <td>{p.Date}</td>
-              </tr>
+              <p>{p.Date}</p>
             ):null
               }
-              </tbody>
-          </table>
           </div>
         )
   }

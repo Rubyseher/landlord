@@ -70,7 +70,7 @@ class Main extends React.Component {
 	{
 		let r=DB[id].Renewal
 		let endDate = moment((r!==undefined && r.length>0) ? r[r.length-1]["Date"] : DB[id]["Start Date"],"M/D/YY", true).add(11,"M")
-		return endDate.isBetween(moment(),moment().add(3,"M"),"M") ? endDate.format("Do MMMM, YYYY") : null;
+		return endDate.isBetween(moment().subtract(1,"M"),moment().add(4,"M"),"M") ? endDate.format("Do MMMM, YYYY") : null;
 	}
 	render () {
 		if(this.state.id!==null)
