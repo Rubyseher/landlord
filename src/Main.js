@@ -74,7 +74,10 @@ class Main extends React.Component {
 	}
 	render () {
 		if(this.state.id!==null)
-			return <Details id={this.state.id}/>
+			 return <Redirect push to={{
+            pathname: '/Details',
+            state: { id: this.state.id }
+        }} />
 		return(
 		<div class="container">
 		<h2>Rent #86: {moment().subtract(1, 'months').format("MMM")} - {moment().format("MMM")}</h2>
