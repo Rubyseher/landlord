@@ -9,18 +9,19 @@ class Main extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			id: null
+			id: null,
+			redirect:null
 		}
 	}
 
 	detailsRedirect = (id) => {
 		this.setState({id: id});
+		this.setState({redirect:"/Details"})
+
 	}
 
-	editRedirect= () => {
-		return <Redirect push to={{
-	 		 pathname: '/Edit'
-	  }} />
+	AddRedirect= () => {
+	this.setState({redirect:"/Add"})
 	}
 	checkRent = (id) => {
 		if(!DB[id]["Paid Rent"])
@@ -78,14 +79,14 @@ class Main extends React.Component {
 		return endDate.isBetween(moment().subtract(1,"M"),moment().add(4,"M"),"M") ? endDate.format("Do MMMM, YYYY") : null;
 	}
 	render () {
-		if(this.state.id!==null)
+		if(this.state.redirect!==null)
 			 return <Redirect push to={{
-            pathname: '/Details',
+            pathname: this.state.redirect,
             state: { id: this.state.id }
         }} />
 		return(
 		<div class="container">
-		<div class="circle" onClick={() => this.editRedirect()}style={{ backgroundColor: '#0057e0',color:"white"}}>
+		<div class="circle" onClick={() => this.AddRedirect()}style={{ backgroundColor: '#0057e0',color:"white"}}>
 		<i class="fa fa-plus" aria-hidden="true"></i></div>
 		<h2>Rent #86: {moment().subtract(1, 'months').format("MMM")} - {moment().format("MMM")}</h2>
 		<div class="nameList">
