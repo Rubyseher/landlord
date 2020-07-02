@@ -17,8 +17,10 @@ class Main extends React.Component {
 		this.setState({id: id});
 	}
 
-	edit= () => {
-
+	editRedirect= () => {
+		return <Redirect push to={{
+	 		 pathname: '/Edit'
+	  }} />
 	}
 	checkRent = (id) => {
 		if(!DB[id]["Paid Rent"])
@@ -63,7 +65,7 @@ class Main extends React.Component {
 	rentColor=(id,type)=>{
 		switch(this.checkRent(id))
 		{
-			case 0: return (type==="icon")?"fa fa-exclamation":"#e39700";
+			case 0: return (type==="icon")?"fa fa-exclamation":"#eda705";
 			case 1: return (type==="icon")?"fa fa-remove":"#d10000";
 			default: return (type==="icon")?"fa fa-check":"#07ab0a";
 		}
@@ -83,7 +85,7 @@ class Main extends React.Component {
         }} />
 		return(
 		<div class="container">
-		<div class="circle" style={{ backgroundColor: '#0057e0',color:"white"}}>
+		<div class="circle" onClick={() => this.editRedirect()}style={{ backgroundColor: '#0057e0',color:"white"}}>
 		<i class="fa fa-plus" aria-hidden="true"></i></div>
 		<h2>Rent #86: {moment().subtract(1, 'months').format("MMM")} - {moment().format("MMM")}</h2>
 		<div class="nameList">
