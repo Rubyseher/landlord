@@ -32,28 +32,28 @@ class Details extends React.Component {
     			this.state.DB && <div id="container">
     		<h1>{this.state.DB[this.props.location.state.id].Name}</h1>
 
-             <p><b>Start Date:</b>{this.state.DB[this.props.location.state.id]["Start Date"]}</p>
-             <p><b>RR No:</b>{this.state.DB[this.props.location.state.id]["RR No"]}</p>
-             <p><b>Acc ID:</b>{this.state.DB[this.props.location.state.id]["Acc ID"]}</p>
-             <p><b>MR Code:</b>{this.state.DB[this.props.location.state.id]["MR Code"]}</p>
+             <p><b>Start Date:</b>{this.state.DB[this.props.location.state.id]["Start_Date"]}</p>
+             <p><b>RR No:</b>{this.state.DB[this.props.location.state.id]["RR_No"]}</p>
+             <p><b>Acc ID:</b>{this.state.DB[this.props.location.state.id]["Acc_ID"]}</p>
+             <p><b>MR Code:</b>{this.state.DB[this.props.location.state.id]["MR_Code"]}</p>
              <p><b>ID:</b>{this.state.DB[this.props.location.state.id]["ID"]}</p>
 
-    <h3>Paid Rent:</h3>
+    <h3>Paid_Rent:</h3>
     <center>
         <table>
           <tr>
-
              <th>Month:</th>
              <th>Date:</th>
              <th>Amount:</th>
           </tr>
-             {   this.state.DB[this.props.location.state.id]["Paid Rent"].map(p=>
-            <tr>
-              <td>{p.Month}</td>
-              <td>{p.Date}</td>
-              <td>{p.Amount}</td>
-            </tr>
-            )
+             {   this.state.DB[this.props.location.state.id]["Paid_Rent"]?
+                  this.state.DB[this.props.location.state.id]["Paid_Rent"].map(p=>
+                    <tr>
+                    <td>{p.Month}</td>
+                    <td>{p.Date}</td>
+                    <td>{p.Amount}</td>
+                    </tr>
+                  ):null
             }
           </table>
           </center>

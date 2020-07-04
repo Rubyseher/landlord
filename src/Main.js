@@ -43,11 +43,11 @@ class Main extends React.Component {
   });
 }
 	checkRent = (id) => {
-		if(!this.state.DB[id]["Paid Rent"])
+		if(!this.state.DB[id]["Paid_Rent"])
 			return -1;
-		else if (this.state.DB[id]["Paid Rent"].length<1) return -1;
+		else if (this.state.DB[id]["Paid_Rent"].length<1) return -1;
 
-		let paid = this.state.DB[id]["Paid Rent"].sort((a,b) => {return a.Month-b.Month})
+		let paid = this.state.DB[id]["Paid_Rent"].sort((a,b) => {return a.Month-b.Month})
 		let expected = [], due = [], dueTotal = 0;
 
 		paid.forEach((p,i) => {
@@ -94,7 +94,7 @@ class Main extends React.Component {
 	checkRenewal=(id)=>
 	{
 		let r=this.state.DB[id].Renewal
-		let endDate = moment((r!==undefined && r.length>0) ? r[r.length-1]["Date"] : this.state.DB[id]["Start Date"],"M/D/YY", true).add(11,"M")
+		let endDate = moment((r!==undefined && r.length>0) ? r[r.length-1]["Date"] : this.state.DB[id]["Start_Date"],"M/D/YY", true).add(11,"M")
 		return endDate.isBetween(moment().subtract(1,"M"),moment().add(4,"M"),"M") ? endDate.format("Do MMMM, YYYY") : null;
 	}
 	render () {

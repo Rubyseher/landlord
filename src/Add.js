@@ -1,23 +1,32 @@
 import React from 'react';
 import DB from './data.json';
+import Firebase from 'firebase';
+import config from './config';
 
 class Add extends React.Component {
     constructor(props) {
         super(props)
         console.log("Add PAGE");
         this.state = {
-          name: '',
+          Name: '',
           ID: '',
           Mobile: '',
           StartDate: new Date,
           Advance: 0,
           Rent: 0,
-          Headcount: 0,
+          Head_Count: 0,
           Building: '',
           Floor: '',
-          Door: ''
+          Door: '',
+          BBMP:'',
+          Acc_ID:'',
+          MR_Code:'',
+          Months:'0',
+          Paid_Rent:[]
         }
-
+        if (!Firebase.apps.length) {
+          Firebase.initializeApp(config);
+        }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -29,8 +38,12 @@ class Add extends React.Component {
     }
 
   handleSubmit(event) {
-    console.log(this.state);
     event.preventDefault();
+
+    console.log(this.state);
+    let id="/"+this.state.Building+"_"+this.state.Floor+"_"+this.state.Door
+    console.log(id);
+    Firebase.database().ref(id).set(this.state);
   }
 
 
@@ -42,7 +55,7 @@ class Add extends React.Component {
       <form  onSubmit={this.handleSubmit}>
           <label>
             Name:
-            <input type="text" name="name" value={this.state.name} onChange={this.handleChange}/>
+            <input type="text" name="Name" value={this.state.Name} onChange={this.handleChange}/>
           </label><br/><br/>
           <label>
             ID:

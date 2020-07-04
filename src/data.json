@@ -10,7 +10,7 @@
 		"RR No": "S10H 582623",
 		"Acc ID": "542682679",
 		"MR Code": "14001870",
-		"Paid Rent": [{
+		"Paid_Rent": [{
 			"Month": 5,
 			"Date": "4/11/19",
 			"Amount": 2000
@@ -28,7 +28,7 @@
 		"RR No": "S10H 582623",
 		"Acc ID": "542682679",
 		"MR Code": "14001870",
-		"Paid Rent": [{
+		"Paid_Rent": [{
 			"Month": 5,
 			"Date": "4/11/19",
 			"Amount": 4000
@@ -56,7 +56,7 @@
 			"Reason": "Painting",
 			"Amount": 5000
 		}],
-		"Paid Rent": [{
+		"Paid_Rent": [{
 			"Month": 5,
 			"Date": "4/11/19",
 			"Amount": 5000
@@ -78,7 +78,7 @@
 		"MR Code": "14012265",
 		"Head Count": 1,
 		"BBMP": 60,
-		"Paid Rent": []
+		"Paid_Rent": []
 	},
 	"86_1_1": {
 		"Name": "Arshia Niazi Bidgoli",
@@ -93,7 +93,7 @@
 		"MR Code": "14012265",
 		"Head Count": 1,
 		"BBMP": 60,
-		"Paid Rent": []
+		"Paid_Rent": []
 	},
 	"86_1_2": {
 		"Name": "Sri Krishna KS ",
@@ -109,7 +109,7 @@
 		"MR Code": "14012265",
 		"Head Count": 2,
 		"BBMP": 60,
-		"Paid Rent": [{
+		"Paid_Rent": [{
 				"Month": 1,
 				"Date": "5/11/20",
 				"Amount": 5000
@@ -135,7 +135,7 @@
 		"MR Code": "14012265",
 		"Head Count": 1,
 		"BBMP": 60,
-		"Paid Rent": []
+		"Paid_Rent": []
 	},
 	"86_3_1": {
 		"Name": "Shashi Kant",
@@ -155,7 +155,7 @@
 		"Advance": 14000,
 		"Rent": 5000,
 		"BBMP": 60,
-		"Paid Rent": [{
+		"Paid_Rent": [{
 			"Month": 1,
 			"Date": "7/5/19",
 			"Amount": 5000

@@ -1,0 +1,200 @@
+{
+  "6_0_1" : {
+    "Acc_ID" : "542682679",
+    "Advance" : 14000,
+    "ID" : "3234  3564  9005",
+    "MR_Code" : "14001870",
+    "Mobile" : "8105684247",
+    "Months" : 11,
+    "Name" : "Narendra",
+    "Paid_Rent" : [ {
+      "Amount" : 2000,
+      "Date" : "4/11/19",
+      "Month" : 5
+    } ],
+    "RR_No" : "S10H 582623",
+    "Rent" : 4000,
+    "Start_Date" : "2/1/19"
+  },
+  "6_1_1" : {
+    "Acc_ID" : "542682679",
+    "Advance" : 14000,
+    "ID" : "BUIPR7407R",
+    "MR_Code" : "14001870",
+    "Mobile" : "8217078750",
+    "Months" : 11,
+    "Name" : "Rakesh Musale",
+    "Paid_Rent" : [ {
+      "Amount" : 4000,
+      "Date" : "4/11/19",
+      "Month" : 5
+    } ],
+    "RR_No" : "S10H 582623",
+    "Rent" : 4000,
+    "Start_Date" : "8/15/19"
+  },
+  "6_2_1" : {
+    "Acc_ID" : "1099630903",
+    "Advance" : 50000,
+    "Deduction" : [ {
+      "Amount" : 5000,
+      "Date" : "2/12/19",
+      "Reason" : "Painting"
+    } ],
+    "ID" : "2978 6909 1705 ",
+    "MR_Code" : "14001870",
+    "Mobile" : "9739993953",
+    "Months" : 11,
+    "Name" : "Vasant Kumar",
+    "Paid_Rent" : [ {
+      "Amount" : 5000,
+      "Date" : "4/11/19",
+      "Month" : 5
+    } ],
+    "RR_No" : "S10H 82622",
+    "Renewal" : [ {
+      "Date" : "2/15/19",
+      "Months" : 11
+    }, {
+      "Date" : "2/15/20",
+      "Months" : 11
+    } ],
+    "Rent" : 8000,
+    "Start_Date" : "2/16/18"
+  },
+  "86_0_1" : {
+    "Acc_ID" : "6092970175",
+    "Advance" : 40000,
+    "BBMP" : 60,
+    "Head_Count" : 1,
+    "ID" : "2699 5997 7265",
+    "MR_Code" : "14012265",
+    "Mobile" : "9964024438",
+    "Months" : 11,
+    "Name" : "Dixson Pius Dcosta",
+    "RR_No" : "S10H 58947",
+    "Rent" : 1000,
+    "Start_Date" : "8/1/19"
+  },
+  "86_1_1" : {
+    "Acc_ID" : "5980175948",
+    "Advance" : 40000,
+    "BBMP" : 60,
+    "Head_Count" : 1,
+    "ID" : "F33558633",
+    "MR_Code" : "14012265",
+    "Mobile" : "9916630643",
+    "Months" : 11,
+    "Name" : "Arshia Niazi Bidgoli",
+    "RR_No" : "S10H 58948",
+    "Rent" : 1000,
+    "Start_Date" : "8/1/19"
+  },
+  "86_1_2" : {
+    "Acc_ID" : "7737784166",
+    "Advance" : 35000,
+    "BBMP" : 60,
+    "Head_Count" : 2,
+    "ID" : "5147 2736 2994",
+    "MR_Code" : "14012265",
+    "Mobile" : "8904186310",
+    "Months" : 11,
+    "Name" : "Sri Krishna KS ",
+    "Nickname" : "Krishna",
+    "Paid_Rent" : [ {
+      "Amount" : 5000,
+      "Date" : "5/11/20",
+      "Month" : 1
+    }, {
+      "Amount" : 5000,
+      "Date" : "6/19/20",
+      "Month" : 2
+    } ],
+    "RR_No" : "S10H 58949",
+    "Rent" : 5000,
+    "Start_Date" : "4/15/20"
+  },
+  "86_1_3" : {
+    "Acc_ID" : "6092970175",
+    "Advance" : 14000,
+    "BBMP" : 60,
+    "Head_Count" : 1,
+    "ID" : "9625 9699 1382",
+    "MR_Code" : "14012265",
+    "Mobile" : "9538917728",
+    "Months" : 11,
+    "Name" : "Mutta Suresh",
+    "Nickname" : "Suresh",
+    "RR_No" : "S10H 58947",
+    "Rent" : 1000,
+    "Start_Date" : "2/1/20"
+  },
+  "86_3_1" : {
+    "Acc_ID" : "8747925154",
+    "Advance" : 14000,
+    "BBMP" : 60,
+    "Head_Count" : 2,
+    "ID" : "6608 0539 1749",
+    "MR_Code" : "14012265",
+    "Mobile" : "66402323",
+    "Months" : 11,
+    "Name" : "Shashi Kant",
+    "Nickname" : "Shashikant",
+    "Paid_Rent" : [ {
+      "Amount" : 5000,
+      "Date" : "7/5/19",
+      "Month" : 1
+    }, {
+      "Amount" : 5000,
+      "Date" : "8/10/19",
+      "Month" : 2
+    }, {
+      "Amount" : 5000,
+      "Date" : "9/11/19",
+      "Month" : 3
+    }, {
+      "Amount" : 5000,
+      "Date" : "10/6/19",
+      "Month" : 4
+    }, {
+      "Amount" : 5000,
+      "Date" : "11/11/19",
+      "Month" : 5
+    }, {
+      "Amount" : 5000,
+      "Date" : "12/7/19",
+      "Month" : 6
+    }, {
+      "Amount" : 5000,
+      "Date" : "1/6/20",
+      "Month" : 7
+    }, {
+      "Amount" : 5000,
+      "Date" : "2/11/20",
+      "Month" : 8
+    }, {
+      "Amount" : 5000,
+      "Date" : "3/7/20",
+      "Month" : 9
+    }, {
+      "Amount" : 5000,
+      "Date" : "4/11/20",
+      "Month" : 10
+    }, {
+      "Amount" : 5000,
+      "Date" : "5/7/20",
+      "Month" : 11
+    }, {
+      "Amount" : 5000,
+      "Date" : "5/11/20",
+      "Month" : 12
+    } ],
+    "RR_No" : "S10H 78399",
+    "Renewal" : [ {
+      "Date" : "5/1/20",
+      "Months" : 11
+    } ],
+    "Rent" : 5000,
+    "Start_Date" : "6/1/19"
+  }
+}
