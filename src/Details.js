@@ -2,12 +2,14 @@ import React from 'react';
 // import this.state.DB from './data.json';
 import Firebase from 'firebase';
 import config from './config';
+import { Redirect, Router } from 'react-router';
 
 class Details extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-          DB:null
+          DB:null,
+          redirect:null
         };
 
         if (!Firebase.apps.length) {
@@ -16,6 +18,9 @@ class Details extends React.Component {
           console.log(this.state.DB);
         }
     }
+    EditRedirect= () => {
+		this.setState({redirect:"/Edit"})
+		}
 
     getUserData = () => {
     let ref = Firebase.database().ref('/');
@@ -28,6 +33,11 @@ class Details extends React.Component {
   this.getUserData();
 }
 	render() {
+    if(this.state.redirect!==null)
+       return <Redirect push to={{
+            pathname: this.state.redirect,
+            state: { id: this.props.location.state.id }
+        }} />
         return(
     			this.state.DB && <div id="container">
     		<h1>{this.state.DB[this.props.location.state.id].Name}</h1>
@@ -64,6 +74,8 @@ class Details extends React.Component {
               <p>{p.Date}</p>
             ):null
               }
+              <div class="rect" onClick={() => this.EditRedirect()}style={{ backgroundColor: '#0057e0',color:"white"}}>
+              <i class="fa fa-pencil" aria-hidden="true"></i></div>
           </div>
         )
   }

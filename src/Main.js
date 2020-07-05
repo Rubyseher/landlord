@@ -35,6 +35,7 @@ class Main extends React.Component {
 	this.setState({redirect:"/Add"})
 	}
 
+
 	getUserData = () => {
   let ref = Firebase.database().ref('/');
   ref.on('value', snapshot => {

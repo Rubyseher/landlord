@@ -1,5 +1,6 @@
 import React from 'react';
 import Main from './Main';
+import Edit from './Edit';
 import './App.css';
 import Details from './Details';
 import Add from './Add';
@@ -13,6 +14,7 @@ function App() {
     <Route exact path="/" component={Main}/>
     <Route path="/Add" component={Add}/>
     <Route path="/Details" render={(props) => <Details {...props} />} />
+    <Route path="/Edit" render={(props) => <Edit {...props} />} />
     </div>
     </Router>
   );
