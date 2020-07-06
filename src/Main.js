@@ -1,48 +1,47 @@
-import React from 'react';
 // import this.state.DB from './data.json';
 import { Redirect, Router } from 'react-router';
+import React from 'react';
 import Details from './Details';
-import './Main.css'
-import moment from 'moment';
 import Firebase from 'firebase';
+import moment from 'moment';
 import config from './config';
+import './Main.css'
 
 class Main extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			id: null,
-			redirect:null,
-			DB:null
-		}
-		if (!Firebase.apps.length) {
-			Firebase.initializeApp(config);
-			this.getUserData()
-			console.log(this.state.DB);
-		}
+			this.state = {
+				id: null,
+				redirect:null,
+				DB:null
+			}
+			if (!Firebase.apps.length) {
+				Firebase.initializeApp(config);
+				this.getUserData()
+				console.log(this.state.DB);
+			}
 	}
 	componentDidMount() {
-  this.getUserData();
-}
+  		this.getUserData();
+	}
 
 	detailsRedirect = (id) => {
 		this.setState({id: id});
 		this.setState({redirect:"/Details"})
-
-	}
+	  }
 
 	AddRedirect= () => {
-	this.setState({redirect:"/Add"})
-	}
-
+		this.setState({redirect:"/Add"})
+  	}
 
 	getUserData = () => {
-  let ref = Firebase.database().ref('/');
-  ref.on('value', snapshot => {
-    this.setState({ DB: snapshot.val()});
-		console.log(snapshot.val());
-  });
-}
+  		let ref = Firebase.database().ref('/');
+  		ref.on('value', snapshot => {
+    		this.setState({ DB: snapshot.val()});
+			console.log(snapshot.val());
+  		});
+	}
+
 	checkRent = (id) => {
 		if(!this.state.DB[id]["Paid_Rent"])
 			return -1;
@@ -100,10 +99,10 @@ class Main extends React.Component {
 	}
 	render () {
 		if(this.state.redirect!==null)
-			 return <Redirect push to={{
+			return <Redirect push to={{
             pathname: this.state.redirect,
             state: { id: this.state.id }
-        }} />
+        	}} />
 		return(
 		this.state.DB && <div class="container">
 		<div class="circle" onClick={() => this.AddRedirect()}style={{ backgroundColor: '#0057e0',color:"white"}}>

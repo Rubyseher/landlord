@@ -4,25 +4,25 @@ import Firebase from 'firebase';
 import config from './config';
 
 class Edit extends React.Component {
-    constructor(props) {
-        super(props)
-        console.log('edit');
+   constructor(props) {
+      super(props)
+      console.log('edit');
         this.state = {
-          Name: '',
-          ID: '',
-          Mobile: '',
-          StartDate: new Date,
-          Advance: 0,
-          Rent: 0,
-          Head_Count: 0,
-          Building: '',
-          Floor: '',
-          Door: '',
-          BBMP:'',
-          Acc_ID:'',
-          MR_Code:'',
-          Months:'0',
-          Paid_Rent:[]
+            Name: '',
+            ID: '',
+            Mobile: '',
+            StartDate: new Date,
+            Advance: 0,
+            Rent: 0,
+            Head_Count: 0,
+            Building: '',
+            Floor: '',
+            Door: '',
+            BBMP:'',
+            Acc_ID:'',
+            MR_Code:'',
+            Months:'0',
+            Paid_Rent:[]
         }
         if (!Firebase.apps.length) {
           Firebase.initializeApp(config);
@@ -45,14 +45,14 @@ class Edit extends React.Component {
         StartDate: data.Start_Date,
         Advance: data.Advance,
         Rent: data.Rent,
-        Head_Count: 0,
-        Building: '',
-        Floor: '',
-        Door: '',
-        BBMP:'',
-        Acc_ID:'',
-        MR_Code:'',
-        Months:'0',
+        Head_Count: data.Head_Count,
+        Building: data.Building,
+        Floor: data.Floor,
+        Door:data.Door,
+        BBMP:data.BBMP,
+        Acc_ID:data.Acc_ID,
+        MR_Code:data.MR_Code,
+        Months:data.Months,
         Paid_Rent:[]
       });
     });
