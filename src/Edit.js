@@ -1,7 +1,7 @@
 import React from 'react';
-import DB from './data.json';
 import Firebase from 'firebase';
 import config from './config';
+import moment from 'moment';
 
 class Edit extends React.Component {
    constructor(props) {
@@ -27,7 +27,6 @@ class Edit extends React.Component {
         if (!Firebase.apps.length) {
           Firebase.initializeApp(config);
           this.getUserData()
-          console.log(this.state.DB);
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -42,19 +41,20 @@ class Edit extends React.Component {
         Name: data.Name,
         ID: this.props.location.state.id,
         Mobile: data.Mobile,
-        StartDate: data.Start_Date,
+        StartDate: new Date(moment(data.Start_Date,"M/D/YY", true).format("YYYY-MM-DD")),
         Advance: data.Advance,
         Rent: data.Rent,
         Head_Count: data.Head_Count,
-        Building: data.Building,
-        Floor: data.Floor,
-        Door:data.Door,
+        Building: this.props.location.state.id.split('_')[0],
+        Floor: this.props.location.state.id.split('_')[1],
+        Door:this.props.location.state.id.split('_')[2],
         BBMP:data.BBMP,
         Acc_ID:data.Acc_ID,
         MR_Code:data.MR_Code,
         Months:data.Months,
         Paid_Rent:[]
       });
+      console.log(this.state);
     });
   }
     handleChange(e) {
@@ -72,7 +72,9 @@ class Edit extends React.Component {
     Firebase.database().ref(id).set(this.state);
   }
 
-
+  componentDidMount() {
+     this.getUserData();
+  }
 
 	render() {
         return(
@@ -105,7 +107,7 @@ class Edit extends React.Component {
           </label><br/><br/>
           <label>
             Headcount:
-            <input type="number" name="Headcount" value={this.state.Headcount} onChange={this.handleChange}/>
+            <input type="number" name="Headcount" value={this.state.Head_Count} onChange={this.handleChange}/>
           </label><br/><br/>
           <label>
             Building:

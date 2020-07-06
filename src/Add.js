@@ -1,5 +1,4 @@
 import React from 'react';
-import DB from './data.json';
 import Firebase from 'firebase';
 import config from './config';
 
