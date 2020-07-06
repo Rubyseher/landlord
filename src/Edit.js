@@ -40,7 +40,7 @@ class Edit extends React.Component {
   		console.log(snapshot.val());
       this.setState({
         Name: data.Name,
-        ID: this.props.location.state.i,
+        ID: this.props.location.state.id,
         Mobile: data.Mobile,
         StartDate: data.Start_Date,
         Advance: data.Advance,
