@@ -2,6 +2,7 @@ import React from 'react';
 import Firebase from 'firebase';
 import config from './config';
 import moment from 'moment';
+import { Redirect, Router } from 'react-router';
 
 class Edit extends React.Component {
    constructor(props) {
@@ -30,13 +31,22 @@ class Edit extends React.Component {
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-    }
+   }
+
+    DeleteRedirect= () => {
+      let success = false;
+      let id="/"+this.state.Building+"_"+this.state.Floor+"_"+this.state.Door
+      Firebase.database().ref(id).remove()
+      // }).then(() => {
+      //   if (success) this.setState({redirect:"/"})
+      // });
+      this.setState({redirect:"/"})
+   }
+
     getUserData = () => {
     let ref = Firebase.database().ref('/'+this.props.location.state.id);
     ref.on('value', snapshot => {
-      // this.setState({ DB: snapshot.val()});
       let data=snapshot.val()
-  		console.log(snapshot.val());
       this.setState({
         Name: data.Name,
         ID: this.props.location.state.id,
@@ -54,7 +64,6 @@ class Edit extends React.Component {
         Months:data.Months,
         Paid_Rent:[]
       });
-      console.log(this.state);
     });
   }
     handleChange(e) {
@@ -65,11 +74,17 @@ class Edit extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-
-    console.log(this.state);
+    let success = false;
     let id="/"+this.state.Building+"_"+this.state.Floor+"_"+this.state.Door
-    console.log(id);
-    Firebase.database().ref(id).set(this.state);
+    Firebase.database().ref(id).update(this.state, (error) => {
+       if (error) {
+         console.error(error);
+       } else {
+         success = true;
+       }
+   }).then(() => {
+      if (success) this.setState({redirect:"/Details"})
+   });
   }
 
   componentDidMount() {
@@ -77,6 +92,11 @@ class Edit extends React.Component {
   }
 
 	render() {
+      if(this.state.redirect!==undefined)
+      return <Redirect pop to={{
+         pathname: this.state.redirect,
+         state: { id: this.props.location.state.id }
+      }} />
         return(
     		<div id="container">
     	<h1>Edit</h1>
@@ -107,7 +127,7 @@ class Edit extends React.Component {
           </label><br/><br/>
           <label>
             Headcount:
-            <input type="number" name="Headcount" value={this.state.Head_Count} onChange={this.handleChange}/>
+            <input type="number" name="Head_Count" value={this.state.Head_Count} onChange={this.handleChange}/>
           </label><br/><br/>
           <label>
             Building:
@@ -123,7 +143,8 @@ class Edit extends React.Component {
           </label><br/><br/>
           <input type="submit" value="Submit" />
       </form>
-
+      <div class="rect" onClick={() => this.DeleteRedirect()}style={{ backgroundColor: '#d10000',color:"white"}}>
+      <i class="fa fa-remove" aria-hidden="true"></i></div>
       </div>
     )
   }
