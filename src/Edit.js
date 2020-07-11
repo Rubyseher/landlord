@@ -3,6 +3,7 @@ import Firebase from 'firebase';
 import config from './config';
 import moment from 'moment';
 import { Redirect, Router } from 'react-router';
+import DB from './DB';
 
 class Edit extends React.Component {
    constructor(props) {
@@ -34,16 +35,32 @@ class Edit extends React.Component {
    }
 
     DeleteRedirect= () => {
-      let success = false;
-      let id="/"+this.state.Building+"_"+this.state.Floor+"_"+this.state.Door
-      Firebase.database().ref(id).remove()
-      // }).then(() => {
-      //   if (success) this.setState({redirect:"/"})
-      // });
+        // Temporarily disabled
+      // Firebase.database().ref(this.props.location.state.id).remove()
       this.setState({redirect:"/"})
    }
 
     getUserData = () => {
+        if(DB.data) {
+            this.setState({
+              Name: DB.data[this.props.location.state.id].Name,
+              ID: this.props.location.state.id,
+              Mobile: DB.data[this.props.location.state.id].Mobile,
+              StartDate: new Date(moment(DB.data[this.props.location.state.id].Start_Date,"M/D/YY", true).format("YYYY-MM-DD")),
+              Advance: DB.data[this.props.location.state.id].Advance,
+              Rent: DB.data[this.props.location.state.id].Rent,
+              Head_Count: DB.data[this.props.location.state.id].Head_Count,
+              Building: this.props.location.state.id.split('_')[0],
+              Floor: this.props.location.state.id.split('_')[1],
+              Door:this.props.location.state.id.split('_')[2],
+              BBMP:DB.data[this.props.location.state.id].BBMP,
+              Acc_ID:DB.data[this.props.location.state.id].Acc_ID,
+              MR_Code:DB.data[this.props.location.state.id].MR_Code,
+              Months:DB.data[this.props.location.state.id].Months,
+              Paid_Rent:[]
+            });
+            return
+        }
     let ref = Firebase.database().ref('/'+this.props.location.state.id);
     ref.on('value', snapshot => {
       let data=snapshot.val()
@@ -77,11 +94,11 @@ class Edit extends React.Component {
     let success = false;
     let id="/"+this.state.Building+"_"+this.state.Floor+"_"+this.state.Door
     Firebase.database().ref(id).update(this.state, (error) => {
-       if (error) {
-         console.error(error);
-       } else {
+       if (error) console.error(error);
+       else {
+           DB.data[this.props.location.state.id] = this.state;
          success = true;
-       }
+     }
    }).then(() => {
       if (success) this.setState({redirect:"/Details"})
    });
@@ -141,7 +158,7 @@ class Edit extends React.Component {
             Door:
             <input type="text" name="Door" value={this.state.Door} onChange={this.handleChange}/>
           </label><br/><br/>
-          <input type="submit" value="Submit" />
+          <input class="rect" type="submit" value="Submit" />
       </form>
       <div class="rect" onClick={() => this.DeleteRedirect()}style={{ backgroundColor: '#d10000',color:"white"}}>
       <i class="fa fa-remove" aria-hidden="true"></i></div>

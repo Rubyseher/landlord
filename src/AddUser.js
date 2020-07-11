@@ -1,11 +1,12 @@
 import React from 'react';
 import Firebase from 'firebase';
 import config from './config';
+import DB from './DB';
 
-class Add extends React.Component {
+class AddUser extends React.Component {
    constructor(props) {
          super(props)
-         console.log("Add PAGE");
+         console.log("AddUser PAGE");
          this.state = {
          Name: '',
          ID: '',
@@ -38,16 +39,23 @@ class Add extends React.Component {
 
    handleSubmit(event) {
       event.preventDefault();
-      console.log(this.state);
       let id="/"+this.state.Building+"_"+this.state.Floor+"_"+this.state.Door
-      console.log(id);
       Firebase.database().ref(id).set(this.state);
+      this.getUserData();
+   }
+
+   getUserData = () => {
+      let ref = Firebase.database().ref('/');
+      ref.on('value', snapshot => {
+         this.setState({ DB: snapshot.val()});
+         DB.data = snapshot.val();
+      });
    }
 
 	render() {
       return(
     		<div id="container">
-    	      <h1>Add</h1>
+    	      <h1>AddUser</h1>
             <form  onSubmit={this.handleSubmit}>
             <label>
             Name:
@@ -96,4 +104,4 @@ class Add extends React.Component {
   }
 }
 
-export default Add;
+export default AddUser;

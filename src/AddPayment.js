@@ -5,7 +5,7 @@ import config from './config';
 import { Redirect, Router } from 'react-router';
 import DB from './DB';
 
-class Details extends React.Component {
+class AddPayment extends React.Component {
    constructor(props) {
       super(props)
       this.state = {
@@ -23,10 +23,6 @@ class Details extends React.Component {
    EditRedirect= () => {
 		this.setState({redirect:"/Edit"})
 	}
-
-    AddPaymentRedirect= () => {
-		this.setState({redirect:"/AddPayment"})
-  	}
 
    getUserData = () => {
        if(DB.data) {
@@ -51,12 +47,8 @@ class Details extends React.Component {
          }} />
          return(
     			this.state.DB && <div id="container">
-    		    <h1>{this.state.DB[this.props.location.state.id].Name}</h1>
-               <p><b>Start Date:</b>{this.state.DB[this.props.location.state.id]["Start_Date"]}</p>
-               <p><b>RR No:</b>{this.state.DB[this.props.location.state.id]["RR_No"]}</p>
-               <p><b>Acc ID:</b>{this.state.DB[this.props.location.state.id]["Acc_ID"]}</p>
-               <p><b>MR Code:</b>{this.state.DB[this.props.location.state.id]["MR_Code"]}</p>
-               <p><b>ID:</b>{this.state.DB[this.props.location.state.id]["ID"]}</p>
+                <h1>Add Payment</h1>
+    		    <h3>{this.state.DB[this.props.location.state.id].Name}</h3>
 
              <h3>Paid Rent:</h3>
                <center>
@@ -67,7 +59,7 @@ class Details extends React.Component {
                   <th>Amount:</th>
                </tr>
                {  this.state.DB[this.props.location.state.id]["Paid_Rent"]?
-                  this.state.DB[this.props.location.state.id]["Paid_Rent"].map(p=>
+                  this.state.DB[this.props.location.state.id]["Paid_Rent"].slice(this.state.DB[this.props.location.state.id]["Paid_Rent"].length - 3).map(p=>
                   <tr>
                      <td>{p.Month}</td>
                      <td>{p.Date}</td>
@@ -77,20 +69,18 @@ class Details extends React.Component {
                }
                </table>
                </center>
+               <br/><br/>
 
-            <h3>Renewal Date:</h3>
-            {  this.state.DB[this.props.location.state.id]["Renewal"]?
-               this.state.DB[this.props.location.state.id]["Renewal"].map(p=>
-                 <p>{p.Date}</p>
-               ):null
-            }
-            <div class="rect" onClick={() => this.AddPaymentRedirect()}style={{ backgroundColor: '#0057e0',color:"white"}}>
-    		<i class="fa fa-plus" aria-hidden="true"></i></div>
+                 <input type="number" name="Rent" value={this.state.Rent} onChange={this.handleChange} placeholder="Rent"/><br/><br/>
+                 <input type="number" name="EB" value={this.state.EB} onChange={this.handleChange} placeholder="EB"/><br/><br/>
+                 <input type="number" name="Water" value={this.state.Water} onChange={this.handleChange} placeholder="Water"/><br/><br/>
+                 <input type="number" name="BBMP" value={this.state.BBMP} onChange={this.handleChange} placeholder="BBMP"/><br/><br/>
+<br/><br/>
                <div class="rect" onClick={() => this.EditRedirect()}style={{ backgroundColor: '#0057e0',color:"white"}}>
-               <i class="fa fa-pencil" aria-hidden="true"></i></div>
+               <i class="fa fa-check" aria-hidden="true"></i></div>
           </div>
         )
   }
 }
 
-export default Details;
+export default AddPayment;

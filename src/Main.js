@@ -6,6 +6,7 @@ import Firebase from 'firebase';
 import moment from 'moment';
 import config from './config';
 import './Main.css'
+import DB from './DB';
 
 class Main extends React.Component {
 	constructor(props) {
@@ -30,15 +31,19 @@ class Main extends React.Component {
 		this.setState({redirect:"/Details"})
 	  }
 
-	AddRedirect= () => {
-		this.setState({redirect:"/Add"})
+	AddUserRedirect= () => {
+		this.setState({redirect:"/AddUser"})
   	}
 
 	getUserData = () => {
+		if(DB.data) {
+            this.setState({DB: DB.data})
+            return
+        }
   		let ref = Firebase.database().ref('/');
   		ref.on('value', snapshot => {
     		this.setState({ DB: snapshot.val()});
-			console.log(snapshot.val());
+			DB.data = snapshot.val();
   		});
 	}
 
@@ -105,13 +110,13 @@ class Main extends React.Component {
         	}} />
 		return(
 		this.state.DB && <div class="container">
-		<div class="circle" onClick={() => this.AddRedirect()}style={{ backgroundColor: '#0057e0',color:"white"}}>
-		<i class="fa fa-plus" aria-hidden="true"></i></div>
-		<h2>Rent #86: {moment().subtract(1, 'months').format("MMM")} - {moment().format("MMM")}</h2>
+		<h2>Rent: {moment().subtract(1, 'months').format("MMM")} - {moment().format("MMM")}</h2>
+		<div class="nameListWrapper">
+		<h4>Building #86</h4>
 		<div class="nameList">
 		{
 		  Object.keys(this.state.DB).map((d,i) => (
-			  (d[0] === '8') ? <div key={d} class="person" onClick={() => this.detailsRedirect(d)} style={{marginRight: (i%3 === 2) ? "0%" : "5%"}}>
+			  (d[0] === '8') ? <div key={d} class="person" onClick={() => this.detailsRedirect(d)} style={{marginRight: (i%3 === 2) ? "0%" : "7%"}}>
 			   <div class="circle" style={{ backgroundColor: this.rentColor(d)}}><i class={this.rentColor(d,"icon")}></i></div>
 			   <div class="name">
 				   {d.split('_')[1] === '0' ? 'G' : d.split('_')[1]}F {this.state.DB[d].Nickname ? this.state.DB[d].Nickname : this.state.DB[d].Name.split(' ')[0]}
@@ -120,11 +125,13 @@ class Main extends React.Component {
 	  		))
 		}
 		</div>
-		<h2>Rent #6: {moment().subtract(1, 'months').format("MMM")} - {moment().format("MMM")}</h2>
+		<br/>
+		<hr/>
+		<h4>Building #6</h4>
 		<div class="nameList">
 		{
 		  Object.keys(this.state.DB).map((d,i) => (
-			  (d[0] === '6') ? <div key={d} class="person" onClick={() => this.detailsRedirect(d)} style={{marginRight: (i%3 === 2) ? "0%" : "5%"}}>
+			  (d[0] === '6') ? <div key={d} class="person" onClick={() => this.detailsRedirect(d)} style={{marginRight: (i%3 === 2) ? "0%" : "7%"}}>
 			  <div class="circle" style={{ backgroundColor:this.rentColor(d) }}><i class={this.rentColor(d,"icon")}></i></div>
 			   <div class="name">
 				   {d.split('_')[1] === '0' ? 'G' : d.split('_')[1]}F {this.state.DB[d].Nickname ? this.state.DB[d].Nickname : this.state.DB[d].Name.split(' ')[0]}
@@ -133,14 +140,27 @@ class Main extends React.Component {
 	  		))
 		}
 		</div>
+		</div>
+		<br/>
 		<h2>Upcoming Renewals</h2>
-		<div class="nameList" style={{display: "block", alignItems: "left"}}>
+		<div class="nameListWrapper">
 		{
 			Object.keys(this.state.DB).map(d => (
 				this.checkRenewal(d)?
 				<p key={d}><b>{this.state.DB[d].Name}:</b> {this.checkRenewal(d)}<br/></p>:null
 			))
 		}
+		</div>
+		<br/>
+		<h2>Tennants</h2>
+		<div class="nameListWrapper">
+		{
+			Object.keys(this.state.DB).map(d => (
+				<p key={d}><b>{this.state.DB[d].Name}:</b> {d}<br/></p>
+			))
+		}
+		<div class="rect" onClick={() => this.AddUserRedirect()}style={{ backgroundColor: '#0057e0',color:"white"}}>
+		<i class="fa fa-plus" aria-hidden="true"></i></div>
 		</div>
 	</div>
 	)
