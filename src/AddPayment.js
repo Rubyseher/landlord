@@ -4,12 +4,24 @@ import Firebase from 'firebase';
 import config from './config';
 import { Redirect, Router } from 'react-router';
 import DB from './DB';
+import moment from 'moment';
 
 class AddPayment extends React.Component {
    constructor(props) {
       super(props)
       this.state = {
-         DB:null,
+          DB: null,
+         RentDate: new Date(),
+         Rent: null,
+         EB: null,
+         Water: null,
+         BBMP: null,
+         DeductionDate: new Date(),
+         Deduction: null,
+         DeductionReason: '',
+         WaiverDate: new Date(),
+         Waiver: null,
+         WaiverReason: '',
          redirect:null
       };
 
@@ -20,9 +32,6 @@ class AddPayment extends React.Component {
          console.log(this.state.DB);
         }
    }
-   EditRedirect= () => {
-		this.setState({redirect:"/Edit"})
-	}
 
    getUserData = () => {
        if(DB.data) {
@@ -37,7 +46,32 @@ class AddPayment extends React.Component {
    }
    componentDidMount() {
       this.getUserData();
+      this.setState({
+          RentDate: moment().format('DD/MM/YYYY'),
+          DeductionDate: moment().format('DD/MM/YYYY'),
+          WaiverDate: moment().format('DD/MM/YYYY')
+      })
    }
+
+   handleChange(e) {
+     this.setState({
+       [e.target.name]: e.target.value
+     });
+   }
+
+ handleSubmit(event) {
+   event.preventDefault();
+   let success = false;
+   Firebase.database().ref(this.props.location.state.id).update(this.state, (error) => {
+      if (error) console.error(error);
+      else {
+          DB.data[this.props.location.state.id] = this.state;
+        success = true;
+    }
+  }).then(() => {
+     if (success) this.setState({redirect:"/Details"})
+  });
+ }
 
 	render() {
       if(this.state.redirect!==null)
@@ -47,10 +81,11 @@ class AddPayment extends React.Component {
          }} />
          return(
     			this.state.DB && <div id="container">
+                <br/><br/>
                 <h1>Add Payment</h1>
     		    <h3>{this.state.DB[this.props.location.state.id].Name}</h3>
-
-             <h3>Paid Rent:</h3>
+                <p>{this.props.location.state.id}</p>
+             <h3>History</h3>
                <center>
                <table>
                <tr>
@@ -61,7 +96,7 @@ class AddPayment extends React.Component {
                {  this.state.DB[this.props.location.state.id]["Paid_Rent"]?
                   this.state.DB[this.props.location.state.id]["Paid_Rent"].slice(this.state.DB[this.props.location.state.id]["Paid_Rent"].length - 3).map(p=>
                   <tr>
-                     <td>{p.Month}</td>
+                     <td>{moment(this.state.DB[this.props.location.state.id]["Start_Date"],"M/D/YY", true).add(p.Month,"M").format("MMM")}</td>
                      <td>{p.Date}</td>
                      <td>{p.Amount}</td>
                   </tr>
@@ -70,14 +105,31 @@ class AddPayment extends React.Component {
                </table>
                </center>
                <br/><br/>
-
+               <h3>New Payment</h3>
+               <p>{
+                   moment(this.state.DB[this.props.location.state.id]["Start_Date"],"M/D/YY", true).add(this.state.DB[this.props.location.state.id]["Paid_Rent"][this.state.DB[this.props.location.state.id]["Paid_Rent"].length -1].Month,"M").format("MMM")
+               } - {
+                   moment(this.state.DB[this.props.location.state.id]["Start_Date"],"M/D/YY", true).add(this.state.DB[this.props.location.state.id]["Paid_Rent"][this.state.DB[this.props.location.state.id]["Paid_Rent"].length -1].Month+1,"M").format("MMM")
+               }</p>
+               <form onSubmit={this.handleSubmit}>
+               <input type="date" name="RentDate" value={this.state.RentDate} onChange={this.handleChange} placeholder="Date"/><br/><br/>
                  <input type="number" name="Rent" value={this.state.Rent} onChange={this.handleChange} placeholder="Rent"/><br/><br/>
                  <input type="number" name="EB" value={this.state.EB} onChange={this.handleChange} placeholder="EB"/><br/><br/>
                  <input type="number" name="Water" value={this.state.Water} onChange={this.handleChange} placeholder="Water"/><br/><br/>
                  <input type="number" name="BBMP" value={this.state.BBMP} onChange={this.handleChange} placeholder="BBMP"/><br/><br/>
-<br/><br/>
-               <div class="rect" onClick={() => this.EditRedirect()}style={{ backgroundColor: '#0057e0',color:"white"}}>
-               <i class="fa fa-check" aria-hidden="true"></i></div>
+                 <br/><br/>
+                 <h3>Additional Deduction</h3>
+                 <input type="date" name="DeductionDate" value={this.state.DeductionDate} onChange={this.handleChange} placeholder="Date"/><br/><br/>
+                   <input type="number" name="Deduction" value={this.state.Deduction} onChange={this.handleChange} placeholder="Deduction"/><br/><br/>
+                   <input type="text" name="DeductionReason" value={this.state.DeductionReason} onChange={this.handleChange} placeholder="Reason"/><br/><br/>
+                   <br/><br/>
+                   <h3>Waive Off</h3>
+                   <input type="date" name="WaiverDate" value={this.state.WaiverDate} onChange={this.handleChange} placeholder="Date"/><br/><br/>
+                     <input type="number" name="Waiver" value={this.state.Waiver} onChange={this.handleChange} placeholder="Waiver"/><br/><br/>
+                     <input type="text" name="WaiverReason" value={this.state.WaiverReason} onChange={this.handleChange} placeholder="Reason"/><br/><br/>
+                     <br/><br/>
+                     <input class="rect" type="submit" value="Submit" />
+                     </form>
           </div>
         )
   }
