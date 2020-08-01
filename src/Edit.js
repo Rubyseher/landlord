@@ -4,6 +4,13 @@ import config from './config';
 import moment from 'moment';
 import { Redirect, Router } from 'react-router';
 import DB from './DB';
+import Popup from "reactjs-popup";
+function popup ()  {
+   console.log("popupfn");
+  return <Popup trigger={<button> Trigger</button>} position="right center">
+    <div>Popup content here !!</div>
+  </Popup>
+};
 
 class Edit extends React.Component {
    constructor(props) {
@@ -36,8 +43,11 @@ class Edit extends React.Component {
 
     DeleteRedirect= () => {
         // Temporarily disabled
-      // Firebase.database().ref(this.props.location.state.id).remove()
-      this.setState({redirect:"/"})
+        if (window.confirm("Delete person?")) {
+           Firebase.database().ref(this.props.location.state.id).remove()
+           this.setState({redirect:"/"})
+        }
+
    }
 
     getUserData = () => {
@@ -72,6 +82,7 @@ class Edit extends React.Component {
         Advance: data.Advance,
         Rent: data.Rent,
         Head_Count: data.Head_Count,
+
         Building: this.props.location.state.id.split('_')[0],
         Floor: this.props.location.state.id.split('_')[1],
         Door:this.props.location.state.id.split('_')[2],
@@ -100,7 +111,7 @@ class Edit extends React.Component {
          success = true;
      }
    }).then(() => {
-      if (success) this.setState({redirect:"/Details"})
+   //   if (success) this.setState({redirect:"/Details"})
    });
   }
 
@@ -158,7 +169,7 @@ class Edit extends React.Component {
             Door:
             <input type="text" name="Door" value={this.state.Door} onChange={this.handleChange}/>
           </label><br/><br/>
-          <input class="rect" type="submit" value="Submit" />
+          <input class="rect" type="submit" value="Submit" onClick={() =>popup()} />
       </form>
       <div class="rect" onClick={() => this.DeleteRedirect()}style={{ backgroundColor: '#d10000',color:"white"}}>
       <i class="fa fa-remove" aria-hidden="true"></i></div>

@@ -114,6 +114,21 @@
     "Rent" : 5000,
     "Start_Date" : "4/15/20"
   },
+  "86_1_17" : {
+    "Acc_ID" : "6092970175",
+    "Advance" : 14000,
+    "BBMP" : 60,
+    "Head_Count" : 1,
+    "ID" : "9625 9699 1382",
+    "MR_Code" : "14012265",
+    "Mobile" : "9538917728",
+    "Months" : 11,
+    "Name" : "RUBY",
+    "Nickname" : "RUBY",
+    "RR_No" : "S10H 58947",
+    "Rent" : 1000,
+    "Start_Date" : "2/1/20"
+  },
   "86_1_3" : {
     "Acc_ID" : "6092970175",
     "Advance" : 14000,
