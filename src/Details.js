@@ -66,7 +66,7 @@ class Details extends React.Component {
                <center>
                <table>
                {this.state.DB[this.props.location.state.id]["Paid_Rent"]? <tr>
-                  <th>Month</th>
+                  <th>Mon</th>
                   <th><i class="fa fa-calendar" aria-hidden="true" style={{color:"black", fontSize:20, marginTop:0}}></i></th>
                   <th><i class="fa fa-home" aria-hidden="true" style={{color:"black", fontSize:22, marginTop:0}}></i></th>
                   <th> <i class="fa fa-lightbulb-o" aria-hidden="true" style={{color:"black", fontSize:22, marginTop:0}}></i></th>
