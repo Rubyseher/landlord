@@ -1,15 +1,13 @@
-import React,{ useState,useEffect } from 'react';
-import ReactDOM from 'react-dom';
+import React,{ useState } from 'react';
 import { useForm } from "react-hook-form";
 import Firebase from 'firebase';
 import config from './config';
-import { Redirect, Router } from 'react-router';
+import { Redirect } from 'react-router';
 import DB from './DB';
 import moment from 'moment';
-// var db=DB.data
 
 function AddPay(props){
-   const[db,setDB]= useState();
+   var [db,setDB]= useState();
    const[redirect,setredirect]= useState(null);
    const { register, handleSubmit } = useForm()
 
@@ -44,7 +42,7 @@ function AddPay(props){
       // },[db]);
 
    const getMonths= () => {
-      let m1,m2
+      let m1
          let startDate=moment(db[props.location.state.id]["Start_Date"],"M/D/YY", true)
          let history=  db[props.location.state.id]["Paid_Rent"]
          if(history===undefined)

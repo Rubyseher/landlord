@@ -2,7 +2,7 @@ import React from 'react';
 import Firebase from 'firebase';
 import config from './config';
 import moment from 'moment';
-import { Redirect, Router } from 'react-router';
+import {Redirect} from 'react-router';
 import DB from './DB';
 import Popup from "reactjs-popup";
 function popup ()  {
@@ -15,12 +15,11 @@ function popup ()  {
 class Edit extends React.Component {
    constructor(props) {
       super(props)
-      console.log('edit');
         this.state = {
             Name: '',
             ID: '',
             Mobile: '',
-            StartDate: new Date,
+            StartDate: "2015-01-01",
             Advance: 0,
             Rent: 0,
             Head_Count: 0,

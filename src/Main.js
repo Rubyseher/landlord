@@ -1,7 +1,5 @@
-// import this.state.DB from './data.json';
-import { Redirect, Router } from 'react-router';
+import {Redirect} from 'react-router';
 import React from 'react';
-import Details from './Details';
 import Firebase from 'firebase';
 import moment from 'moment';
 import config from './config';

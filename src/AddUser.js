@@ -11,7 +11,7 @@ class AddUser extends React.Component {
          Name: '',
          ID: '',
          Mobile: '',
-         StartDate: new Date,
+         StartDate: "2015-01-01",
          Advance: 0,
          Rent: 0,
          Head_Count: 0,

@@ -2,7 +2,7 @@
 import React from 'react';
 import Firebase from 'firebase';
 import config from './config';
-import { Redirect, Router } from 'react-router';
+import {Redirect} from 'react-router';
 import DB from './DB';
 import moment from "moment";
 
