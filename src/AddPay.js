@@ -123,19 +123,19 @@ function AddPay(props){
                <h3>New Payment</h3>
                <p>{getMonths()}</p>
          <form onSubmit={handleSubmit(d => testSubmitHandler(d))}>
-               <input type="date" name="RentDate" ref={register}placeholder="Date" value={moment().format("YYYY-MM-DD")}/><br/><br/>
+               <input type="date" name="RentDate" ref={register}placeholder="Date"/><br/><br/>
                <input type="number" name="Rent" ref={register}placeholder="Rent"/><br/><br/>
                <input type="number" name="EB" ref={register}placeholder="EB"/><br/><br/>
                <input type="number" name="Water" ref={register}placeholder="Water"/><br/><br/>
                <input type="number" name="BBMP" ref={register}placeholder="BBMP"/><br/><br/>
                <br/><br/>
                <h3>Additional Deduction</h3>
-               <input type="date" name="DeductionDate" ref={register}placeholder="Date" value={moment().format("YYYY-MM-DD")}/><br/><br/>
+               <input type="date" name="DeductionDate" ref={register}placeholder="Date"/><br/><br/>
                <input type="number" name="Deduction" ref={register}placeholder="Deduction"/><br/><br/>
                <input type="text" name="DeductionReason" ref={register}placeholder="Reason"/><br/><br/>
                <br/><br/>
                <h3>Waive Off</h3>
-               <input type="date" name="WaiverDate" ref={register}placeholder="Date" value={moment().format("YYYY-MM-DD")}/><br/><br/>
+               <input type="date" name="WaiverDate" ref={register}placeholder="Date"/><br/><br/>
                <input type="number" name="Waiver" ref={register}placeholder="Waiver"/><br/><br/>
                <input type="text" name="WaiverReason" ref={register}placeholder="Reason"/><br/><br/>
                <br/><br/>
