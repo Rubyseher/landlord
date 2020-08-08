@@ -60,23 +60,23 @@ function AddPay(props){
 
 		 if(d.Rent){
 			if(person.Paid_Rent)
-				person.Paid_Rent.push({Date: d.RentDate,Amount: parseInt(d.Rent), Month: person.Paid_Rent[person.Paid_Rent.length-1].month+1, EB: d.EB, Water: d.Water, BBMP:d.BBMP})
+				person.Paid_Rent.push({Date: moment(d.RentDate).format("M/D/YY"),Amount: parseInt(d.Rent), Month: person.Paid_Rent[person.Paid_Rent.length-1].Month+1, EB: d.EB, Water: d.Water, BBMP:d.BBMP})
 			else
-				person.Paid_Rent = [{Date: d.RentDate,Amount: parseInt(d.Rent), Month: 1, EB: d.EB, Water: d.Water, BBMP:d.BBMP}]
+				person.Paid_Rent = [{Date: moment(d.RentDate).format("M/D/YY"),Amount: parseInt(d.Rent), Month: 1, EB: d.EB, Water: d.Water, BBMP:d.BBMP}]
 			}
 
 		if(d.Deduction){
    			if(person.Deduction)
-   				person.Deduction.push({Date: d.DeductionDate, Amount: parseInt(d.Deduction), Reason: d.DeductionReason})
+   				person.Deduction.push({Date: moment(d.DeductionDate).format("M/D/YY"), Amount: parseInt(d.Deduction), Reason: d.DeductionReason})
    			else
-   				person.Deduction = [{Date: d.DeductionDate, Amount: parseInt(d.Deduction), Reason: d.DeductionReason}]
+   				person.Deduction = [{Date: moment(d.DeductionDate).format("M/D/YY"), Amount: parseInt(d.Deduction), Reason: d.DeductionReason}]
    			}
 
 		if(d.Waiver){
    			if(person.Waiver)
-   				person.Waiver.push({Date: d.WaiverDate, Amount: d.Waiver, Reason: d.WaiverReason})
+   				person.Waiver.push({Date:moment(d.WaiverDate).format("M/D/YY") , Amount: parseInt(d.Waiver), Reason: d.WaiverReason})
    			else
-   				person.Waiver = [{Date: d.WaiverDate, Amount: d.Waiver, Reason: d.WaiverReason}]
+   				person.Waiver = [{Date:moment(d.WaiverDate).format("M/D/YY") , Amount: parseInt(d.Waiver), Reason: d.WaiverReason}]
    			}
 
          Firebase.database().ref(props.location.state.id).update(person, (error) => {
