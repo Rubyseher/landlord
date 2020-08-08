@@ -64,11 +64,13 @@ class Details extends React.Component {
                <table>
                <tr>
                   <th>Month</th>
-                  <th>Date</th>
-                  <th>Rent</th>
-                  <th>EB</th>
-                  <th>Water</th>
-                  <th>BBMP</th>
+                  <th><i class="fa fa-calendar" aria-hidden="true" style={{color:"black"}}></i></th>
+                  <th><i class="fa fa-home" aria-hidden="true" style={{color:"black"}}></i></th>
+                  <th> <i class="fa fa-lightbulb-o" aria-hidden="true" style={{color:"black"}}></i></th>
+                  <th><i class="fa fa-tint" aria-hidden="true" style={{color:"black"}}></i></th>
+                  <th><i class="fa fa-trash" aria-hidden="true" style={{color:"black"}}></i></th>
+                  <th>Total</th>
+
                </tr>
                {  this.state.DB[this.props.location.state.id]["Paid_Rent"]?
                   this.state.DB[this.props.location.state.id]["Paid_Rent"].map(p=>
@@ -79,6 +81,7 @@ class Details extends React.Component {
                      <td>{p.EB?p.EB:0}</td>
                      <td>{p.Water?p.Water:0}</td>
                      <td>{p.BBMP?p.BBMP:0}</td>
+                     <td>{(p.Amount?p.Amount:0)+(p.EB?p.EB:0)+(p.Water?p.Water:0)+(p.BBMP?p.BBMP:0)}</td>
                   </tr>
                   ):null
                }

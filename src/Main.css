@@ -25,7 +25,7 @@
 .rect{
 		border-radius:10px;
 		margin: 3%;
-		height: 55px;
+		height: 45px;
 		justify-content: center;
 		-webkit-box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.51);
 	box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.51);
