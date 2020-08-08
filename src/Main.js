@@ -152,6 +152,7 @@ class Main extends React.Component {
 		</div>
 		<br/>
 		<h2>Upcoming Renewals</h2>
+		<p style={{marginTop:-15}}>6 Months</p>
 		<div class="nameListWrapper">
 		{
 			this.renewalsExist() ? Object.keys(this.state.DB).map(d => (

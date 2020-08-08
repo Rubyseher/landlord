@@ -56,7 +56,7 @@ class Edit extends React.Component {
               Name: DB.data[this.props.location.state.id].Name,
               ID: this.props.location.state.id,
               Mobile: DB.data[this.props.location.state.id].Mobile,
-              StartDate: new Date(moment(DB.data[this.props.location.state.id].Start_Date,"M/D/YY", true).format("YYYY-MM-DD")),
+              StartDate: moment(DB.data[this.props.location.state.id].Start_Date,"M/D/YY", true).format("YYYY-MM-DD"),
               Advance: DB.data[this.props.location.state.id].Advance,
               Rent: DB.data[this.props.location.state.id].Rent,
               Head_Count: DB.data[this.props.location.state.id].Head_Count,
@@ -78,7 +78,7 @@ class Edit extends React.Component {
         Name: data.Name,
         ID: this.props.location.state.id,
         Mobile: data.Mobile,
-        StartDate: new Date(moment(data.Start_Date,"M/D/YY", true).format("YYYY-MM-DD")),
+        StartDate: moment(data.Start_Date,"M/D/YY", true).format("YYYY-MM-DD"),
         Advance: data.Advance,
         Rent: data.Rent,
         Head_Count: data.Head_Count,
@@ -112,7 +112,9 @@ class Edit extends React.Component {
      }
    }).then(() => {
    //   if (success) this.setState({redirect:"/Details"})
-   });
+}).catch((e) => {
+	window.alert(e.message)
+});
   }
 
   componentDidMount() {
