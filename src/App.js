@@ -5,7 +5,6 @@ import Main from './Main';
 import Edit from './Edit';
 import Details from './Details';
 import AddPay from './AddPay';
-import { Component } from 'react';
 import {BrowserRouter as Router, Route}from'react-router-dom';
 
 function App() {
