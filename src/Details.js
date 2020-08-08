@@ -55,25 +55,26 @@ class Details extends React.Component {
          return(
     			this.state.DB && <div id="container">
     		    <h1>{this.state.DB[this.props.location.state.id].Name}</h1>
-               <p><b>Start Date:</b>{moment(this.state.DB[this.props.location.state.id]["Start_Date"],"M/D/YY").format("Do MMMM, YYYY") }</p>
-               <p><b>RR No:</b>{this.state.DB[this.props.location.state.id]["RR_No"]}</p>
-               <p><b>Acc ID:</b>{this.state.DB[this.props.location.state.id]["Acc_ID"]}</p>
-               <p><b>MR Code:</b>{this.state.DB[this.props.location.state.id]["MR_Code"]}</p>
-               <p><b>ID:</b>{this.state.DB[this.props.location.state.id]["ID"]}</p>
+               <p><b>Start Date </b>{moment(this.state.DB[this.props.location.state.id]["Start_Date"],"M/D/YY").format("Do MMMM, YYYY") }</p>
+               <p><b>RR No </b>{this.state.DB[this.props.location.state.id]["RR_No"]}</p>
+               <p><b>Acc ID </b>{this.state.DB[this.props.location.state.id]["Acc_ID"]}</p>
+               <p><b>MR Code </b>{this.state.DB[this.props.location.state.id]["MR_Code"]}</p>
+			   <p><b>ID Proof </b>{this.state.DB[this.props.location.state.id]["ID"]}</p>
+               <p><b>Rent Amount</b>{this.state.DB[this.props.location.state.id]["Rent"]}</p>
 
-             <h3>Paid Rent:</h3>
+             <h3>Paid Rent</h3>
                <center>
                <table>
-               <tr>
+               {this.state.DB[this.props.location.state.id]["Paid_Rent"]? <tr>
                   <th>Month</th>
-                  <th><i class="fa fa-calendar" aria-hidden="true" style={{color:"black"}}></i></th>
-                  <th><i class="fa fa-home" aria-hidden="true" style={{color:"black"}}></i></th>
-                  <th> <i class="fa fa-lightbulb-o" aria-hidden="true" style={{color:"black"}}></i></th>
-                  <th><i class="fa fa-tint" aria-hidden="true" style={{color:"black"}}></i></th>
-                  <th><i class="fa fa-trash" aria-hidden="true" style={{color:"black"}}></i></th>
+                  <th><i class="fa fa-calendar" aria-hidden="true" style={{color:"black", fontSize:20, marginTop:0}}></i></th>
+                  <th><i class="fa fa-home" aria-hidden="true" style={{color:"black", fontSize:22, marginTop:0}}></i></th>
+                  <th> <i class="fa fa-lightbulb-o" aria-hidden="true" style={{color:"black", fontSize:22, marginTop:0}}></i></th>
+                  <th><i class="fa fa-tint" aria-hidden="true" style={{color:"black", fontSize:22, marginTop:0}}></i></th>
+                  <th><i class="fa fa-trash" aria-hidden="true" style={{color:"black", fontSize:22, marginTop:0}}></i></th>
                   <th>Total</th>
 
-               </tr>
+               </tr>:<tr><td></td><td></td><td></td><td>Not Payments Yet</td><td></td><td></td><td></td></tr>}
                {  this.state.DB[this.props.location.state.id]["Paid_Rent"]?
                   this.state.DB[this.props.location.state.id]["Paid_Rent"].map(p=>
                   <tr>
@@ -88,18 +89,53 @@ class Details extends React.Component {
                   ):null
                }
                </table>
-               </center>
 
-            <h3>Renewal Date:</h3>
+            <h3>Renewals</h3>
             {  this.state.DB[this.props.location.state.id]["Renewal"]?
                this.state.DB[this.props.location.state.id]["Renewal"].map(p=>
                  <p>{moment(p.Date ,"M/D/YY").format("Do MMMM, YYYY")}</p>
-               ):null
+			 ):<tr><td></td><td>Not Renewed Yet</td><td></td></tr>
             }
+			<h3>Deductions</h3>
+			<table>
+			{this.state.DB[this.props.location.state.id]["Deduction"]? <tr>
+			   <th>Date</th>
+			   <th>Amount</th>
+			   <th>Reason</th>
+		   </tr> : null}
+            {  this.state.DB[this.props.location.state.id]["Deduction"]?
+               this.state.DB[this.props.location.state.id]["Deduction"].map(p=>
+				   <tr>
+				   <td>{moment(p.Date ,"M/D/YY").format("D-MMM-YY")}</td>
+				   <td>{p.Amount}</td>
+                 	<td>{p.Reason}</td>
+				 </tr>
+			 ):<tr><td></td><td>No Deductions Yet</td><td></td></tr>
+            }
+			</table>
+			<h3>Waivers</h3>
+			<table>
+			{this.state.DB[this.props.location.state.id]["Waiver"]? <tr>
+			   <th>Date</th>
+			   <th>Amount</th>
+			   <th>Reason</th>
+		   </tr> : null}
+            {  this.state.DB[this.props.location.state.id]["Waiver"]?
+               this.state.DB[this.props.location.state.id]["Waiver"].map(p=>
+				   <tr>
+				   <td>{moment(p.Date ,"M/D/YY").format("D-MMM-YY")}</td>
+				   <td>{p.Amount}</td>
+                 	<td>{p.Reason}</td>
+				 </tr>
+			 ):<tr><td></td><td>No Waivers Yet</td><td></td></tr>
+            }
+			</table>
+			</center>
+
             <div class="buttoncont">
-                     <div class="rect" onClick={() => this.AddPaymentRedirect()}style={{ backgroundColor: '#d40d82',color:"white",width:"46%"}}>
+                     <div class="rect" onClick={() => this.AddPaymentRedirect()}style={{ backgroundColor: '#0057e0',color:"white",width:"46%"}}>
           	 	     <i class="fa fa-plus" aria-hidden="true"></i></div>
-                     <div class="rect" onClick={() => this.EditRedirect()}style={{ backgroundColor: '#8708c9',color:"white",width:"46%"}}>
+                     <div class="rect" onClick={() => this.EditRedirect()}style={{ backgroundColor: '#7d7d7d',color:"white",width:"46%"}}>
                      <i class="fa fa-pencil" aria-hidden="true"></i></div>
                      </div>
             </div>
