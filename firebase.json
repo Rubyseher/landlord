@@ -1,0 +1,11 @@
+{
+  "hosting": {
+	  "site": "rent-tracker-86",
+    "public": "build",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
