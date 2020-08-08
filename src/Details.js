@@ -46,6 +46,46 @@ class Details extends React.Component {
       this.getUserData();
    }
 
+   checkRent = (id) => {
+	   if(!this.state.DB[id]["Paid_Rent"])
+		   return -1;
+	   else if (this.state.DB[id]["Paid_Rent"].length<1) return -1;
+
+	   let paid = this.state.DB[id]["Paid_Rent"].sort((a,b) => {return a.Month-b.Month})
+	   let expected = [], due = [], dueTotal = 0;
+
+	   paid.forEach((p,i) => {
+		   if(this.state.DB[id].Renewal) {
+			   if(this.state.DB[id].Renewal.length>0) {
+				   let period = p.Month/11
+				   if(period<=1) expected.push(this.state.DB[id].Rent);
+				   else expected.push(this.state.DB[id].Rent*(1.05*Math.floor(period)));
+			   }
+		   } else expected.push(this.state.DB[id].Rent);
+		   if(p.Month !== paid[0].Month+i) {
+			   let diff = p.Month - paid[i-1].Month - 1;
+
+			   for(let i=diff; i>0; i--) {
+				   due.push({
+					   month: p.Month-i,
+					   amount: expected[i]
+				   })
+				   dueTotal += expected[i]
+			   }
+		   }
+		   let due_i = expected[i]-p['Amount']
+		   if(due_i!==0){
+			   due.push({
+				   month: p.Month,
+				   date: p.Date,
+				   amount: due_i
+			   })
+			   dueTotal += due_i
+		   }
+	   });
+	   return dueTotal
+   }
+
 	render() {
       if(this.state.redirect!==null)
          return <Redirect push to={{
@@ -60,7 +100,8 @@ class Details extends React.Component {
                <p><b>Acc ID </b>{this.state.DB[this.props.location.state.id]["Acc_ID"]}</p>
                <p><b>MR Code </b>{this.state.DB[this.props.location.state.id]["MR_Code"]}</p>
 			   <p><b>ID Proof </b>{this.state.DB[this.props.location.state.id]["ID"]}</p>
-               <p><b>Rent Amount </b>{this.state.DB[this.props.location.state.id]["Rent"]}</p>
+			   <p><b>Rent Amount </b>{this.state.DB[this.props.location.state.id]["Rent"]}</p>
+               <p><b>Rent Due </b>{this.checkRent(this.props.location.state.id)}</p>
 			   <br/><hr style={{width:'60%'}}/><br/>
              <h3>Paid Rent</h3>
                <center>
@@ -74,7 +115,7 @@ class Details extends React.Component {
                   <th class="Tabledes"><i class="fa fa-trash" aria-hidden="true" style={{color:"black", fontSize:22, marginTop:0}}></i></th>
                   <th class="Tabledes">Total</th>
 
-               </tr>:<tr><td></td><td></td><td></td><td>Not Payments Yet</td><td></td><td></td><td></td></tr>}
+               </tr>:<tr><td></td><td></td><td></td><td>No Payments Yet</td><td></td><td></td><td></td></tr>}
                {  this.state.DB[this.props.location.state.id]["Paid_Rent"]?
                   this.state.DB[this.props.location.state.id]["Paid_Rent"].map(p=>
                   <tr>

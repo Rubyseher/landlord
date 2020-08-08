@@ -102,9 +102,9 @@ function AddPay(props){
                <center>
                <table>
                <tr>
-                  <th>Month:</th>
-                  <th>Date:</th>
-                  <th>Amount:</th>
+                  <th>Month</th>
+                  <th>Date</th>
+                  <th>Amount</th>
                </tr>
                {  db[props.location.state.id]["Paid_Rent"]?
                   db[props.location.state.id]["Paid_Rent"].slice(db[props.location.state.id]["Paid_Rent"].length - 3).map(p=>

@@ -1,4 +1,3 @@
-import './App.css';
 import AddUser from './AddUser';
 import React from 'react';
 import Main from './Main';
