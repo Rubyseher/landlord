@@ -6,6 +6,7 @@ import { Redirect, Router } from 'react-router';
 import DB from './DB';
 import moment from "moment";
 
+
 class Details extends React.Component {
    constructor(props) {
       super(props)
@@ -28,6 +29,7 @@ class Details extends React.Component {
     AddPaymentRedirect= () => {
 		this.setState({redirect:"/AddPayment"})
   	}
+
 
    getUserData = () => {
        if(DB.data) {
@@ -75,13 +77,13 @@ class Details extends React.Component {
                {  this.state.DB[this.props.location.state.id]["Paid_Rent"]?
                   this.state.DB[this.props.location.state.id]["Paid_Rent"].map(p=>
                   <tr>
-                     <td>{moment(this.state.DB[this.props.location.state.id]["Start_Date"],"M/D/YY").add(p.Month ,"M").format("MMM")}</td>
-                     <td>{ moment(p.Date,"M/D/YY").format("D-MMM-YY")}</td>
-                     <td>{p.Amount?p.Amount:0}</td>
-                     <td>{p.EB?p.EB:0}</td>
-                     <td>{p.Water?p.Water:0}</td>
-                     <td>{p.BBMP?p.BBMP:0}</td>
-                     <td>{(p.Amount?p.Amount:0)+(p.EB?p.EB:0)+(p.Water?p.Water:0)+(p.BBMP?p.BBMP:0)}</td>
+                     <td class="Tabledes">{moment(this.state.DB[this.props.location.state.id]["Start_Date"],"M/D/YY").add(p.Month ,"M").format("MMM")}</td>
+                     <td class="Tabledes">{ moment(p.Date,"M/D/YY").format("D-MMM-YY")}</td>
+                     <td class="Tabledes">{p.Amount?p.Amount:0}</td>
+                     <td class="Tabledes">{p.EB?p.EB:0}</td>
+                     <td class="Tabledes">{p.Water?p.Water:0}</td>
+                     <td class="Tabledes">{p.BBMP?p.BBMP:0}</td>
+                     <td class="Tabledes">{(p.Amount?p.Amount:0)+(p.EB?p.EB:0)+(p.Water?p.Water:0)+(p.BBMP?p.BBMP:0)}</td>
                   </tr>
                   ):null
                }
