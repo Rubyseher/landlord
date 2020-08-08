@@ -165,7 +165,9 @@ class Main extends React.Component {
 		<div class="nameListWrapper">
 		{
 			Object.keys(this.state.DB).map(d => (
-				<p key={d}><b>{this.state.DB[d].Name}:</b> {d}<br/></p>
+				<p key={d}><b>{this.state.DB[d].Name}: </b>#{d.split("_")[0]}, {d.split('_')[1] === '0' ? 'G' : d.split('_')[1]}F<br/>
+
+				</p>
 			))
 		}
 		<div class="rect" onClick={() => this.AddUserRedirect()}style={{ backgroundColor: '#0057e0',color:"white"}}>
