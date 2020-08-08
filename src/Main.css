@@ -24,7 +24,11 @@
 
 
 .Tabledes{
-	width:1%;
+	/* width:5%; */
+	padding: 1px 1px 15px 15px;
+ 		/* padding-left: 2%;
+		padding-right: 2%;
+		 margin-left: 2%; */
    }
 .rect{
 		border-radius:10px;
