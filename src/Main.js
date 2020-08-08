@@ -112,6 +112,9 @@ class Main extends React.Component {
 		return result
 	}
 	render () {
+		<div  class="App-header" as="h2" style={{ textAlign: "center", margin: 20 ,color:'white'}}>
+                  Rent
+      </div>
 		if(this.state.redirect!==null)
 			return <Redirect push to={{
             pathname: this.state.redirect,

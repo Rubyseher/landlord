@@ -22,6 +22,22 @@
 	margin-top: 1%;
 }
 
+.App-header {
+   font-family: 'Kaushan Script', cursive;
+   align-items: center;
+   color:white;
+   height: 6%;
+   width: 100%;
+   display: flex;
+   font-size: 30px;
+   justify-content: center;
+   padding: 4%;
+   position: fixed;
+   top: -20px;
+   left: -20px;
+   background-color: rgb(74, 29, 209);
+   z-index: 1000;
+}
 
 .Tabledes{
 	/* width:5%; */
