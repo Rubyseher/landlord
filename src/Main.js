@@ -100,7 +100,16 @@ class Main extends React.Component {
 	{
 		let r=this.state.DB[id].Renewal
 		let endDate = moment((r!==undefined && r.length>0) ? r[r.length-1]["Date"] : this.state.DB[id]["Start_Date"],"M/D/YY", true).add(11,"M")
-		return endDate.isBetween(moment().subtract(1,"M"),moment().add(4,"M"),"M") ? endDate.format("Do MMMM, YYYY") : null;
+		return endDate.isBetween(moment().subtract(1,"M"),moment().add(7,"M"),"M") ? endDate.format("Do MMMM, YYYY") : null;
+	}
+
+	renewalsExist = () => {
+		var result = false
+		Object.keys(this.state.DB).forEach(d => {
+			if(this.checkRenewal(d)!==null)
+				result = true
+		});
+		return result
 	}
 	render () {
 		if(this.state.redirect!==null)
@@ -145,10 +154,10 @@ class Main extends React.Component {
 		<h2>Upcoming Renewals</h2>
 		<div class="nameListWrapper">
 		{
-			Object.keys(this.state.DB).map(d => (
+			this.renewalsExist() ? Object.keys(this.state.DB).map(d => (
 				this.checkRenewal(d)?
 				<p key={d}><b>{this.state.DB[d].Name}:</b> {this.checkRenewal(d)}<br/></p>:null
-			))
+			)) : <div><br/>No Upcoming Renewals in the next 6 months.<br/><br/></div>
 		}
 		</div>
 		<br/>
