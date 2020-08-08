@@ -100,7 +100,7 @@ function AddPay(props){
                <h1>Add Payment</h1>
                <h3>{db[props.location.state.id].Name}</h3>
                <p>{props.location.state.id}</p>
-               <h3>History</h3>
+               <h3>Recent History</h3>
                <center>
                <table>
                <tr>

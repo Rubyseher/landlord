@@ -84,7 +84,7 @@ class Details extends React.Component {
                      <td class="Tabledes">{p.EB?p.EB:0}</td>
                      <td class="Tabledes">{p.Water?p.Water:0}</td>
                      <td class="Tabledes">{p.BBMP?p.BBMP:0}</td>
-                     <td class="Tabledes">{(p.Amount?p.Amount:0)+(p.EB?p.EB:0)+(p.Water?p.Water:0)+(p.BBMP?p.BBMP:0)}</td>
+                     <td class="Tabledes">{parseInt(p.Amount?p.Amount:0)+parseInt(p.EB?p.EB:0)+parseInt(p.Water?p.Water:0)+parseInt(p.BBMP?p.BBMP:0)}</td>
                   </tr>
                   ):null
                }
