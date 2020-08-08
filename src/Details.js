@@ -84,9 +84,9 @@ class Details extends React.Component {
                  <p>{p.Date}</p>
                ):null
             }
-            <div class="rect" onClick={() => this.AddPaymentRedirect()}style={{ backgroundColor: '#0057e0',color:"white"}}>
+            <div class="rect" onClick={() => this.AddPaymentRedirect()}style={{ backgroundColor: '#d40d82',color:"white"}}>
     		<i class="fa fa-plus" aria-hidden="true"></i></div>
-               <div class="rect" onClick={() => this.EditRedirect()}style={{ backgroundColor: '#0057e0',color:"white"}}>
+               <div class="rect" onClick={() => this.EditRedirect()}style={{ backgroundColor: '#8708c9',color:"white"}}>
                <i class="fa fa-pencil" aria-hidden="true"></i></div>
           </div>
         )

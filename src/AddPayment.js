@@ -12,15 +12,15 @@ class AddPayment extends React.Component {
       this.state = {
           DB: null,
          RentDate: new Date(),
-         Rent: null,
-         EB: null,
-         Water: null,
-         BBMP: null,
+         Rent: 0,
+         EB: 0,
+         Water: 0,
+         BBMP: 0,
          DeductionDate: new Date(),
-         Deduction: null,
+         Deduction: 0,
          DeductionReason: '',
          WaiverDate: new Date(),
-         Waiver: null,
+         Waiver: 0,
          WaiverReason: '',
          redirect:null
       };
@@ -43,6 +43,17 @@ class AddPayment extends React.Component {
          this.setState({ DB: snapshot.val()});
          DB.data = snapshot.val();
       });
+   }
+   getMonths= () => {
+      let m1,m2
+         let startDate=moment(this.state.DB[this.props.location.state.id]["Start_Date"],"M/D/YY", true)
+         let history=  this.state.DB[this.props.location.state.id]["Paid_Rent"]
+         console.log(history);
+            console.log(startDate);
+         if(history===undefined)
+            return startDate.add(1,"M").format("MMM")
+        else m1=startDate.add(history[history.length -1].Month,"M")
+         return m1.add(1,"M").format("MMM")
    }
    componentDidMount() {
       this.getUserData();
@@ -106,11 +117,7 @@ class AddPayment extends React.Component {
                </center>
                <br/><br/>
                <h3>New Payment</h3>
-               <p>{
-                   moment(this.state.DB[this.props.location.state.id]["Start_Date"],"M/D/YY", true).add(this.state.DB[this.props.location.state.id]["Paid_Rent"][this.state.DB[this.props.location.state.id]["Paid_Rent"].length -1].Month,"M").format("MMM")
-               } - {
-                   moment(this.state.DB[this.props.location.state.id]["Start_Date"],"M/D/YY", true).add(this.state.DB[this.props.location.state.id]["Paid_Rent"][this.state.DB[this.props.location.state.id]["Paid_Rent"].length -1].Month+1,"M").format("MMM")
-               }</p>
+               <p>{this.getMonths()}</p>
                <form onSubmit={this.handleSubmit}>
                <input type="date" name="RentDate" value={this.state.RentDate} onChange={this.handleChange} placeholder="Date"/><br/><br/>
                  <input type="number" name="Rent" value={this.state.Rent} onChange={this.handleChange} placeholder="Rent"/><br/><br/>

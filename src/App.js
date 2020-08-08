@@ -4,7 +4,7 @@ import React from 'react';
 import Main from './Main';
 import Edit from './Edit';
 import Details from './Details';
-import AddPayment from './AddPayment';
+import AddPay from './AddPay';
 import { Component } from 'react';
 import {BrowserRouter as Router, Route}from'react-router-dom';
 
@@ -16,7 +16,7 @@ function App() {
       <Route path="/AddUser" component={AddUser}/>
       <Route path="/Details" render={(props) => <Details {...props} />} />
       <Route path="/Edit" render={(props) => <Edit {...props} />} />
-      <Route path="/AddPayment" render={(props) => <AddPayment {...props} />} />
+      <Route path="/AddPayment" render={(props) => <AddPay {...props} />} />
       </div>
       </Router>
    );
