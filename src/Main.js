@@ -120,7 +120,9 @@ class Main extends React.Component {
 		this.state.DB && <div class="container">
 		<h2>Rent: {moment().subtract(1, 'months').format("MMM")} - {moment().format("MMM")}</h2>
 		<div class="nameListWrapper">
-		
+		<div  class="App-header" as="h2" style={{ textAlign: "center", margin: 20 ,color:'white'}}>
+					Rent
+		</div>
 		<h4>Building #86</h4>
 		<div class="nameList">
 		{
