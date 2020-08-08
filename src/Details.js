@@ -60,27 +60,27 @@ class Details extends React.Component {
                <p><b>Acc ID </b>{this.state.DB[this.props.location.state.id]["Acc_ID"]}</p>
                <p><b>MR Code </b>{this.state.DB[this.props.location.state.id]["MR_Code"]}</p>
 			   <p><b>ID Proof </b>{this.state.DB[this.props.location.state.id]["ID"]}</p>
-               <p><b>Rent Amount</b>{this.state.DB[this.props.location.state.id]["Rent"]}</p>
-
+               <p><b>Rent Amount </b>{this.state.DB[this.props.location.state.id]["Rent"]}</p>
+			   <br/><hr style={{width:'60%'}}/><br/>
              <h3>Paid Rent</h3>
                <center>
                <table>
                {this.state.DB[this.props.location.state.id]["Paid_Rent"]? <tr>
-                  <th>Mon</th>
-                  <th><i class="fa fa-calendar" aria-hidden="true" style={{color:"black", fontSize:20, marginTop:0}}></i></th>
-                  <th><i class="fa fa-home" aria-hidden="true" style={{color:"black", fontSize:22, marginTop:0}}></i></th>
-                  <th> <i class="fa fa-lightbulb-o" aria-hidden="true" style={{color:"black", fontSize:22, marginTop:0}}></i></th>
-                  <th><i class="fa fa-tint" aria-hidden="true" style={{color:"black", fontSize:22, marginTop:0}}></i></th>
-                  <th><i class="fa fa-trash" aria-hidden="true" style={{color:"black", fontSize:22, marginTop:0}}></i></th>
-                  <th>Total</th>
+                  <th class="Tabledes">Mon</th>
+                  <th class="Tabledes"><i class="fa fa-calendar" aria-hidden="true" style={{color:"black", fontSize:20, marginTop:0}}></i></th>
+                  <th class="Tabledes"><i class="fa fa-home" aria-hidden="true" style={{color:"black", fontSize:22, marginTop:0}}></i></th>
+                  <th class="Tabledes"> <i class="fa fa-lightbulb-o" aria-hidden="true" style={{color:"black", fontSize:22, marginTop:0}}></i></th>
+                  <th class="Tabledes"><i class="fa fa-tint" aria-hidden="true" style={{color:"black", fontSize:22, marginTop:0}}></i></th>
+                  <th class="Tabledes"><i class="fa fa-trash" aria-hidden="true" style={{color:"black", fontSize:22, marginTop:0}}></i></th>
+                  <th class="Tabledes">Total</th>
 
                </tr>:<tr><td></td><td></td><td></td><td>Not Payments Yet</td><td></td><td></td><td></td></tr>}
                {  this.state.DB[this.props.location.state.id]["Paid_Rent"]?
                   this.state.DB[this.props.location.state.id]["Paid_Rent"].map(p=>
                   <tr>
-                     <td class="Tabledes">{moment(this.state.DB[this.props.location.state.id]["Start_Date"],"M/D/YY").add(p.Month ,"M").format("MMM")}</td>
-                     <td class="Tabledes">{ moment(p.Date,"M/D/YY").format("D-MMM-YY")}</td>
-                     <td class="Tabledes">{p.Amount?p.Amount:0}</td>
+                     <td  class="Tabledes">{moment(this.state.DB[this.props.location.state.id]["Start_Date"],"M/D/YY").add(p.Month ,"M").format("MMM")}</td>
+                     <td  class="Tabledes">{ moment(p.Date,"M/D/YY").format("D-MMM-YY")}</td>
+                     <td  class="Tabledes" style={p.Amount === this.state.DB[this.props.location.state.id]["Rent"] ? {color:'#336914', fontWeight:'bold'} : {}}>{p.Amount?p.Amount:0}</td>
                      <td class="Tabledes">{p.EB?p.EB:0}</td>
                      <td class="Tabledes">{p.Water?p.Water:0}</td>
                      <td class="Tabledes">{p.BBMP?p.BBMP:0}</td>
@@ -89,6 +89,8 @@ class Details extends React.Component {
                   ):null
                }
                </table>
+			   <br/><hr style={{width:'60%'}}/><br/>
+
 
             <h3>Renewals</h3>
             {  this.state.DB[this.props.location.state.id]["Renewal"]?
@@ -96,6 +98,9 @@ class Details extends React.Component {
                  <p>{moment(p.Date ,"M/D/YY").format("Do MMMM, YYYY")}</p>
 			 ):<tr><td></td><td>Not Renewed Yet</td><td></td></tr>
             }
+			<br/><hr style={{width:'60%'}}/><br/>
+
+
 			<h3>Deductions</h3>
 			<table>
 			{this.state.DB[this.props.location.state.id]["Deduction"]? <tr>
@@ -113,6 +118,9 @@ class Details extends React.Component {
 			 ):<tr><td></td><td>No Deductions Yet</td><td></td></tr>
             }
 			</table>
+			<br/><hr style={{width:'60%'}}/><br/>
+
+
 			<h3>Waivers</h3>
 			<table>
 			{this.state.DB[this.props.location.state.id]["Waiver"]? <tr>
@@ -130,7 +138,9 @@ class Details extends React.Component {
 			 ):<tr><td></td><td>No Waivers Yet</td><td></td></tr>
             }
 			</table>
+			<br/><br/><br/>
 			</center>
+
 
             <div class="buttoncont">
                      <div class="rect" onClick={() => this.AddPaymentRedirect()}style={{ backgroundColor: '#0057e0',color:"white",width:"46%"}}>
