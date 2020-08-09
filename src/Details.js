@@ -121,7 +121,7 @@ class Details extends React.Component {
                {  this.state.DB[this.props.location.state.id]["Paid_Rent"]?
                   this.state.DB[this.props.location.state.id]["Paid_Rent"].map(p=>
                   <tr>
-                     <td  class="Tabledes">{moment(this.state.DB[this.props.location.state.id]["Start_Date"],"M/D/YY").add(p.Month ,"M").format("MMM")}</td>
+                     <td  class="Tabledes">{moment(this.state.DB[this.props.location.state.id]["Start_Date"],"M/D/YY").add(p.Month-1 ,"M").format("MMM")}</td>
                      <td  class="Tabledes">{ moment(p.Date,"M/D/YY").format("D-MMM-YY")}</td>
                      <td  class="Tabledes" style={p.Amount === this.state.DB[this.props.location.state.id]["Rent"] ? {color:'#336914', fontWeight:'bold'} : {}}>{p.Amount?p.Amount:0}</td>
                      <td class="Tabledes">{p.Others?p.Others:0}</td>

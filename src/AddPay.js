@@ -46,9 +46,9 @@ function AddPay(props){
          let startDate=moment(db[props.location.state.id]["Start_Date"],"M/D/YY", true)
          let history=  db[props.location.state.id]["Paid_Rent"]
          if(history===undefined)
-            return startDate.add(1,"M").format("MMM")
+            return startDate.format("MMM")
         else m1=startDate.add(history[history.length -1].Month,"M")
-         return m1.add(1,"M").format("MMM")
+         return m1.format("MMM")
    };
 
    const testSubmitHandler = (d) => {
@@ -109,7 +109,7 @@ function AddPay(props){
                {  db[props.location.state.id]["Paid_Rent"]?
                   db[props.location.state.id]["Paid_Rent"].slice(db[props.location.state.id]["Paid_Rent"].length - 3).map(p=>
                   <tr>
-                     <td>{moment(db[props.location.state.id]["Start_Date"],"M/D/YY", true).add(p.Month,"M").format("MMM")}</td>
+                     <td>{moment(db[props.location.state.id]["Start_Date"],"M/D/YY", true).add(p.Month-1,"M").format("MMM")}</td>
                      <td>{p.Date}</td>
                      <td>{p.Amount}</td>
                   </tr>
