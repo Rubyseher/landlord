@@ -5,12 +5,6 @@ import moment from 'moment';
 import {Redirect} from 'react-router';
 import DB from './DB';
 import Popup from "reactjs-popup";
-function popup ()  {
-   console.log("popupfn");
-  return <Popup trigger={<button> Trigger</button>} position="right center">
-    <div>Popup content here !!</div>
-  </Popup>
-};
 
 class Edit extends React.Component {
    constructor(props) {
@@ -26,7 +20,6 @@ class Edit extends React.Component {
             Building: '',
             Floor: '',
             Door: '',
-            BBMP:'',
             Acc_ID:'',
             MR_Code:'',
             Months:'0',
@@ -62,7 +55,6 @@ class Edit extends React.Component {
               Building: this.props.location.state.id.split('_')[0],
               Floor: this.props.location.state.id.split('_')[1],
               Door:this.props.location.state.id.split('_')[2],
-              BBMP:DB.data[this.props.location.state.id].BBMP,
               Acc_ID:DB.data[this.props.location.state.id].Acc_ID,
               MR_Code:DB.data[this.props.location.state.id].MR_Code,
               Months:DB.data[this.props.location.state.id].Months,
@@ -85,7 +77,6 @@ class Edit extends React.Component {
         Building: this.props.location.state.id.split('_')[0],
         Floor: this.props.location.state.id.split('_')[1],
         Door:this.props.location.state.id.split('_')[2],
-        BBMP:data.BBMP,
         Acc_ID:data.Acc_ID,
         MR_Code:data.MR_Code,
         Months:data.Months,
@@ -103,19 +94,22 @@ class Edit extends React.Component {
     event.preventDefault();
     let success = false;
     let id="/"+this.state.Building+"_"+this.state.Floor+"_"+this.state.Door
-    Firebase.database().ref(id).update(this.state, (error) => {
-       if (error) console.error(error);
-       else {
-           DB.data[this.props.location.state.id] = this.state;
-         success = true;
-     }
-   }).then(() => {
-   //   if (success) this.setState({redirect:"/Details"})
-}).catch((e) => {
-	window.alert(e.message)
-});
+     if (window.confirm("Save?")) {
+       Firebase.database().ref(id).update(this.state, (error) => {
+          if (error) console.error(error);
+          else {
+              // DB.data[id] = this.state;
+              DB.data=undefined
+            success = true;
+          }
+       }).then(() => {
+        if (success) this.setState({redirect:"/Details"})
+          }).catch((e) => {
+   	window.alert(e.message)
+   });
   }
-
+  else{this.setState({redirect:"/Details"})}
+}
   componentDidMount() {
      this.getUserData();
   }
@@ -170,7 +164,7 @@ class Edit extends React.Component {
             Door:
             <input type="text" name="Door" value={this.state.Door} onChange={this.handleChange}/>
           </label><br/><br/>
-          <input class="rect" type="submit" value="Submit" onClick={() =>popup()} />
+          <input class="rect" type="submit" value="Submit" />
       </form>
       <div class="rect" onClick={() => this.DeleteRedirect()}style={{ backgroundColor: '#d10000',color:"white"}}>
       <i class="fa fa-remove" aria-hidden="true"></i></div>

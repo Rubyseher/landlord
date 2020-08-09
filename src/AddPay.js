@@ -58,9 +58,9 @@ function AddPay(props){
 
 		 if(d.Rent){
 			if(person.Paid_Rent)
-				person.Paid_Rent.push({Date: moment(d.RentDate).format("M/D/YY"),Amount: parseInt(d.Rent), Month: person.Paid_Rent[person.Paid_Rent.length-1].Month+1, EB: d.EB, Water: d.Water, BBMP:d.BBMP})
+				person.Paid_Rent.push({Date: moment(d.RentDate).format("M/D/YY"),Amount: parseInt(d.Rent), Month: person.Paid_Rent[person.Paid_Rent.length-1].Month+1, Others: d.Others})
 			else
-				person.Paid_Rent = [{Date: moment(d.RentDate).format("M/D/YY"),Amount: parseInt(d.Rent), Month: 1, EB: d.EB, Water: d.Water, BBMP:d.BBMP}]
+				person.Paid_Rent = [{Date: moment(d.RentDate).format("M/D/YY"),Amount: parseInt(d.Rent), Month: 1, Others: d.Others}]
 			}
 
 		if(d.Deduction){
@@ -97,7 +97,7 @@ function AddPay(props){
                <br/><br/>
                <h1>Add Payment</h1>
                <h3>{db[props.location.state.id].Name}</h3>
-               <p>{props.location.state.id}</p>
+               <p>#{props.location.state.id.split("_")[0]}, {props.location.state.id.split('_')[1] === '0' ? 'G' : props.location.state.id.split('_')[1]}F</p>
                <h3>Recent History</h3>
                <center>
                <table>
@@ -123,9 +123,7 @@ function AddPay(props){
          <form onSubmit={handleSubmit(d => testSubmitHandler(d))}>
                <input type="date" name="RentDate" ref={register}placeholder="Date"/><br/><br/>
                <input type="number" name="Rent" ref={register}placeholder="Rent"/><br/><br/>
-               <input type="number" name="EB" ref={register}placeholder="EB"/><br/><br/>
-               <input type="number" name="Water" ref={register}placeholder="Water"/><br/><br/>
-               <input type="number" name="BBMP" ref={register}placeholder="BBMP"/><br/><br/>
+               <input type="number" name="Others" ref={register}placeholder="Others"/><br/><br/>
                <br/><br/>
                <h3>Additional Deduction</h3>
                <input type="date" name="DeductionDate" ref={register}placeholder="Date"/><br/><br/>

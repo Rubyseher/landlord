@@ -18,7 +18,6 @@ class AddUser extends React.Component {
          Building: '',
          Floor: '',
          Door: '',
-         BBMP:'',
          Acc_ID:'',
          MR_Code:'',
          Months:'0',

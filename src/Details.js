@@ -95,13 +95,14 @@ class Details extends React.Component {
          return(
     			this.state.DB && <div id="container">
     		    <h1>{this.state.DB[this.props.location.state.id].Name}</h1>
-               <p><b>Start Date </b>{moment(this.state.DB[this.props.location.state.id]["Start_Date"],"M/D/YY").format("Do MMMM, YYYY") }</p>
-               <p><b>RR No </b>{this.state.DB[this.props.location.state.id]["RR_No"]}</p>
-               <p><b>Acc ID </b>{this.state.DB[this.props.location.state.id]["Acc_ID"]}</p>
-               <p><b>MR Code </b>{this.state.DB[this.props.location.state.id]["MR_Code"]}</p>
-			   <p><b>ID Proof </b>{this.state.DB[this.props.location.state.id]["ID"]}</p>
-			   <p><b>Rent Amount </b>{this.state.DB[this.props.location.state.id]["Rent"]}</p>
-               <p><b>Rent Due </b>{this.checkRent(this.props.location.state.id)}</p>
+               <p><b>Start Date &nbsp;&nbsp;</b>{moment(this.state.DB[this.props.location.state.id]["Start_Date"],"M/D/YY").format("Do MMMM, YYYY") }</p>
+               <p><b>RR No &nbsp;&nbsp;</b>{this.state.DB[this.props.location.state.id]["RR_No"]}</p>
+               <p><b>Acc ID &nbsp;&nbsp;</b>{this.state.DB[this.props.location.state.id]["Acc_ID"]}</p>
+               <p><b>MR Code &nbsp;&nbsp;</b>{this.state.DB[this.props.location.state.id]["MR_Code"]}</p>
+               <p><b>ID Proof &nbsp;&nbsp;</b>{this.state.DB[this.props.location.state.id]["ID"]}</p>
+			      <p><b>Advance &nbsp;&nbsp;</b>{this.state.DB[this.props.location.state.id]["Advance"]}</p>
+			      <p><b>Rent Amount &nbsp;&nbsp;</b>{this.state.DB[this.props.location.state.id]["Rent"]}</p>
+               <p><b>Rent Due &nbsp;&nbsp;</b><span style={this.checkRent(this.props.location.state.id)!==0?{color:"red",fontWeight:'bold'}:{color:'#336914', fontWeight:'bold'}}>{this.checkRent(this.props.location.state.id)===-1?"No Data":this.checkRent(this.props.location.state.id)}</span></p>
 			   <br/><hr style={{width:'60%'}}/><br/>
              <h3>Paid Rent</h3>
                <center>
@@ -110,9 +111,10 @@ class Details extends React.Component {
                   <th class="Tabledes">Mon</th>
                   <th class="Tabledes"><i class="fa fa-calendar" aria-hidden="true" style={{color:"black", fontSize:20, marginTop:0}}></i></th>
                   <th class="Tabledes"><i class="fa fa-home" aria-hidden="true" style={{color:"black", fontSize:22, marginTop:0}}></i></th>
-                  <th class="Tabledes"> <i class="fa fa-lightbulb-o" aria-hidden="true" style={{color:"black", fontSize:22, marginTop:0}}></i></th>
-                  <th class="Tabledes"><i class="fa fa-tint" aria-hidden="true" style={{color:"black", fontSize:22, marginTop:0}}></i></th>
-                  <th class="Tabledes"><i class="fa fa-trash" aria-hidden="true" style={{color:"black", fontSize:22, marginTop:0}}></i></th>
+                  <th class="Tabledes"> <i class="fa fa-lightbulb-o" aria-hidden="true" style={{color:"black", fontSize:22, marginTop:0}}></i>&nbsp;|&nbsp;
+                  <i class="fa fa-tint" aria-hidden="true" style={{color:"black", fontSize:22, marginTop:0}}></i>&nbsp;|&nbsp;
+                  <i class="fa fa-trash" aria-hidden="true" style={{color:"black", fontSize:22, marginTop:0}}></i></th>
+
                   <th class="Tabledes">Total</th>
 
                </tr>:<tr><td></td><td></td><td></td><td>No Payments Yet</td><td></td><td></td><td></td></tr>}
@@ -122,10 +124,8 @@ class Details extends React.Component {
                      <td  class="Tabledes">{moment(this.state.DB[this.props.location.state.id]["Start_Date"],"M/D/YY").add(p.Month ,"M").format("MMM")}</td>
                      <td  class="Tabledes">{ moment(p.Date,"M/D/YY").format("D-MMM-YY")}</td>
                      <td  class="Tabledes" style={p.Amount === this.state.DB[this.props.location.state.id]["Rent"] ? {color:'#336914', fontWeight:'bold'} : {}}>{p.Amount?p.Amount:0}</td>
-                     <td class="Tabledes">{p.EB?p.EB:0}</td>
-                     <td class="Tabledes">{p.Water?p.Water:0}</td>
-                     <td class="Tabledes">{p.BBMP?p.BBMP:0}</td>
-                     <td class="Tabledes">{parseInt(p.Amount?p.Amount:0)+parseInt(p.EB?p.EB:0)+parseInt(p.Water?p.Water:0)+parseInt(p.BBMP?p.BBMP:0)}</td>
+                     <td class="Tabledes">{p.Others?p.Others:0}</td>
+                     <td class="Tabledes">{parseInt(p.Amount?p.Amount:0)+parseInt(p.Others?p.Others:0)}</td>
                   </tr>
                   ):null
                }
