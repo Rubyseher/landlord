@@ -45,7 +45,13 @@ class Details extends React.Component {
    componentDidMount() {
       this.getUserData();
    }
-
+   totalDeductable(){
+      var sum=0
+      Deduction.forEach((item, i) => {
+         sum+=Deduction[i]
+      });
+      return sum;
+   }
    checkRent = (id) => {
 	   if(!this.state.DB[id]["Paid_Rent"])
 		   return -1;
@@ -100,7 +106,8 @@ class Details extends React.Component {
                <p><b>Acc ID &nbsp;&nbsp;</b>{this.state.DB[this.props.location.state.id]["Acc_ID"]}</p>
                <p><b>MR Code &nbsp;&nbsp;</b>{this.state.DB[this.props.location.state.id]["MR_Code"]}</p>
                <p><b>ID Proof &nbsp;&nbsp;</b>{this.state.DB[this.props.location.state.id]["ID"]}</p>
-			      <p><b>Advance &nbsp;&nbsp;</b>{this.state.DB[this.props.location.state.id]["Advance"]}</p>
+               <p><b>Advance &nbsp;&nbsp;</b>{this.state.DB[this.props.location.state.id]["Advance"]}</p>
+			      <p><b>Returnable Advance &nbsp;&nbsp;</b>{this.state.DB[this.props.location.state.id]["Advance"]-this.totalDeductable()}</p>
 			      <p><b>Rent Amount &nbsp;&nbsp;</b>{this.state.DB[this.props.location.state.id]["Rent"]}</p>
                <p><b>Rent Due &nbsp;&nbsp;</b><span style={this.checkRent(this.props.location.state.id)!==0?{color:"red",fontWeight:'bold'}:{color:'#336914', fontWeight:'bold'}}>{this.checkRent(this.props.location.state.id)===-1?"No Data":this.checkRent(this.props.location.state.id)}</span></p>
 			   <br/><hr style={{width:'60%'}}/><br/>
@@ -186,7 +193,7 @@ class Details extends React.Component {
             <div class="buttoncont">
                      <div class="rect" onClick={() => this.AddPaymentRedirect()}style={{ backgroundColor: '#0057e0',color:"white",width:"46%"}}>
           	 	     <i class="fa fa-plus" aria-hidden="true"></i></div>
-                     <div class="rect" onClick={() => this.EditRedirect()}style={{ backgroundColor: '#7d7d7d',color:"white",width:"46%"}}>
+                     <div class="rect" style={{ backgroundColor: '#7d7d7d',color:"white",width:"46%"}}>
                      <i class="fa fa-pencil" aria-hidden="true"></i></div>
                      </div>
             </div>

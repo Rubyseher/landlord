@@ -58,7 +58,7 @@ class Edit extends React.Component {
               Acc_ID:DB.data[this.props.location.state.id].Acc_ID,
               MR_Code:DB.data[this.props.location.state.id].MR_Code,
               Months:DB.data[this.props.location.state.id].Months,
-              Paid_Rent:[]
+              Paid_Rent:DB.data[this.props.location.state.id].Paid_Rent,
             });
             return
         }
@@ -80,7 +80,7 @@ class Edit extends React.Component {
         Acc_ID:data.Acc_ID,
         MR_Code:data.MR_Code,
         Months:data.Months,
-        Paid_Rent:[]
+        Paid_Rent:data.Paid_Rent,
       });
     });
   }
