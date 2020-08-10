@@ -97,7 +97,7 @@ class Details extends React.Component {
       if(this.state.redirect!==null)
          return <Redirect push to={{
             pathname: this.state.redirect,
-            state: { id: this.props.location.state.id }
+            state: { id: this.props.location.state.id, db:this.state.DB }
          }} />
          return(
     			this.state.DB && <div id="container">

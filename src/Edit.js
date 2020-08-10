@@ -11,7 +11,7 @@ import { useForm } from "react-hook-form";
 function Edit(props){
    var [db,setDB]= useState();
    const[redirect,setredirect]= useState(null);
-   const { register, handleSubmit, reset } = useForm({defaultValues:db});
+   const { register, handleSubmit } = useForm({defaultValues:props.location.state.db});
 
 
 
@@ -49,7 +49,6 @@ function Edit(props){
              setDB(DB.data)
          }
       }
-      reset(db)
    },[db]);
 
 
