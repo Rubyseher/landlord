@@ -48,6 +48,7 @@ class Details extends React.Component {
    totalDeductable(){
       var sum=0
       var Deduction=this.state.DB[this.props.location.state.id]["Deduction"]
+if (Deduction)
       Deduction.forEach((item, i) => {
          sum+=item.Amount
       });
@@ -90,7 +91,14 @@ class Details extends React.Component {
 			   dueTotal += due_i
 		   }
 	   });
-	   return dueTotal
+      var Wave,sum=0
+      Wave=this.state.DB[this.props.location.state.id]["Waiver"]
+if (Wave)
+      Wave.forEach((item, i) => {
+         sum+=item.Amount
+      });
+
+	   return dueTotal-sum
    }
 
 	render() {
@@ -194,8 +202,9 @@ class Details extends React.Component {
             <div class="buttoncont">
                      <div class="rect" onClick={() => this.AddPaymentRedirect()}style={{ backgroundColor: '#0057e0',color:"white",width:"46%"}}>
           	 	     <i class="fa fa-plus" aria-hidden="true"></i></div>
-                     <div class="rect" onClick={() => this.setState({redirect:"/Edit"})}style={{ backgroundColor: '#7d7d7d',color:"white",width:"46%"}}>
-                     <i class="fa fa-pencil" aria-hidden="true"></i></div>
+                     {// div class="rect" onClick={() => this.setState({redirect:"/Edit"})}style={{ backgroundColor: '#7d7d7d',color:"white",width:"46%"}}>
+                     // <i class="fa fa-pencil" aria-hidden="true"></i></div>
+                    }
                      </div>
             </div>
         )
