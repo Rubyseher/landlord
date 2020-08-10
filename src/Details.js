@@ -101,6 +101,15 @@ if (Wave)
 	   return dueTotal-sum
    }
 
+   getRent = () => {
+	   let rent = this.state.DB[this.props.location.state.id]["Rent"]
+
+	   if(this.state.DB[this.props.location.state.id]["Renewal"])
+	   	rent *= Math.pow(1.05,this.state.DB[this.props.location.state.id]["Renewal"].length )
+
+		return rent
+   }
+
 	render() {
       if(this.state.redirect!==null)
          return <Redirect push to={{
@@ -117,7 +126,7 @@ if (Wave)
                <p><b>ID Proof &nbsp;&nbsp;</b>{this.state.DB[this.props.location.state.id]["ID"]}</p>
                <p><b>Advance &nbsp;&nbsp;</b>{this.state.DB[this.props.location.state.id]["Advance"]}</p>
 			      <p><b>Returnable Advance &nbsp;&nbsp;</b>{this.state.DB[this.props.location.state.id]["Advance"]-this.totalDeductable()}</p>
-			      <p><b>Rent Amount &nbsp;&nbsp;</b>{this.state.DB[this.props.location.state.id]["Rent"]}</p>
+			      <p><b>Rent Amount &nbsp;&nbsp;</b>{this.getRent()}</p>
                <p><b>Rent Due &nbsp;&nbsp;</b><span style={this.checkRent(this.props.location.state.id)!==0?{color:"red",fontWeight:'bold'}:{color:'#336914', fontWeight:'bold'}}>{this.checkRent(this.props.location.state.id)===-1?"No Data":this.checkRent(this.props.location.state.id)}</span></p>
 			   <br/><hr style={{width:'60%'}}/><br/>
              <h3>Paid Rent</h3>
