@@ -131,7 +131,6 @@ if (Wave)
     else rent = person.Rent
 
 }
-console.log(rent);
 		return rent
    }
 
