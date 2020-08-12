@@ -10,6 +10,7 @@ function AddPay(props){
    var [db,setDB]= useState();
    const[redirect,setredirect]= useState(null);
    const { register, handleSubmit } = useForm()
+   var [expWaiver,setExpWaiver] = useState(0);
 
       const getUserData = () => {
          console.log("get user data");
@@ -55,12 +56,13 @@ function AddPay(props){
       console.log(d);
          let success = false;
 		 let person = db[props.location.state.id]
+		 if(person.Paid_Rent.slice(-1)[0].Amount === 0) person.Paid_Rent.pop()
 
 		 if(d.Rent){
 			if(person.Paid_Rent)
-				person.Paid_Rent.push({Date: moment(d.RentDate).format("M/D/YY"),Amount: parseInt(d.Rent), Month: person.Paid_Rent[person.Paid_Rent.length-1].Month+1, Others: d.Others})
+				person.Paid_Rent.push({Date: moment(d.RentDate).format("M/D/YY"),Amount: parseInt(d.Rent), Month: person.Paid_Rent.slice(-1)[0].Month+1, Others: d.Others  || 0})
 			else
-				person.Paid_Rent = [{Date: moment(d.RentDate).format("M/D/YY"),Amount: parseInt(d.Rent), Month: 1, Others: d.Others}]
+				person.Paid_Rent = [{Date: moment(d.RentDate).format("M/D/YY"),Amount: parseInt(d.Rent), Month: 1, Others: d.Others || 0}]
 			}
 
 		if(d.Deduction){
@@ -87,6 +89,34 @@ function AddPay(props){
             if (success) setredirect("/Details")
             });
    }
+
+   const getRent = (m) => {
+      let person = db[props.location.state.id]
+	   let rent = person.Rent
+
+      if(person.Renewal){
+      if(person.Renewal.length>0) {
+         var iStatus=[false]
+         person.Renewal.forEach((r, i) => {
+            iStatus.push(true)
+         });
+
+         let period = m ? (m-1)/11 : (person["Paid_Rent"].length-1)/11
+         rent = person.Rent*(Math.pow(1.05, iStatus[Math.floor(period)] ? Math.floor(period) : 0))
+		 // - iStatus.slice(1,Math.floor(period)).filter(s => s===false).length
+      }
+    else rent = person.Rent
+
+}
+		return rent
+   }
+
+   const autoWaiver = (e) => {
+	   setExpWaiver(getRent() - e.target.value);
+   }
+
+
+
       if(redirect!==null)
          return <Redirect push to={{
             pathname: redirect,
@@ -119,10 +149,11 @@ function AddPay(props){
                </center>
                <br/><br/>
                <h3>New Payment</h3>
-               <p>{getMonths()}</p>
+			   <p>{getMonths()}</p>
+               <p>Expected: {getRent()}</p>
          <form onSubmit={handleSubmit(d => testSubmitHandler(d))}>
                <input type="date" name="RentDate" ref={register}placeholder="Date"/><br/><br/>
-               <input type="number" name="Rent" ref={register}placeholder="Rent"/><br/><br/>
+               <input type="number" name="Rent" ref={register}placeholder="Rent" onBlur={(e) => autoWaiver(e)}/><br/><br/>
                <input type="number" name="Others" ref={register}placeholder="Others"/><br/><br/>
                <br/><br/>
                <h3>Additional Deduction</h3>
@@ -131,6 +162,7 @@ function AddPay(props){
                <input type="text" name="DeductionReason" ref={register}placeholder="Reason"/><br/><br/>
                <br/><br/>
                <h3>Waive Off</h3>
+			   <p>Expected: {expWaiver}</p>
                <input type="date" name="WaiverDate" ref={register}placeholder="Date"/><br/><br/>
                <input type="number" name="Waiver" ref={register}placeholder="Waiver"/><br/><br/>
                <input type="text" name="WaiverReason" ref={register}placeholder="Reason"/><br/><br/>

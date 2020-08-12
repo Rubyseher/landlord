@@ -1,10 +1,8 @@
 import React,{ useState ,useEffect} from 'react';
 import Firebase from 'firebase';
 import config from './config';
-import moment from 'moment';
 import {Redirect} from 'react-router';
 import DB from './DB';
-import Popup from "reactjs-popup";
 import { useForm } from "react-hook-form";
 
 

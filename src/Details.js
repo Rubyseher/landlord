@@ -62,16 +62,20 @@ if (Deduction)
 	   let paid = this.state.DB[id]["Paid_Rent"].sort((a,b) => {return a.Month-b.Month})
 	   let expected = [], due = [], dueTotal = 0;
 
+	   if(moment(paid.slice(-1)[0].Date,"M/D/YY").add(1,"M").isBefore(moment()))
+	   	paid.push({Date:moment(paid.slice(-1)[0].Date,"M/D/YY").add(1,"M").format("M/D/YY"),Amount: 0, Month: paid.slice(-1)[0].Month+1})
+
 	   paid.forEach((p,i) => {
 		   if(this.state.DB[id].Renewal) {
 			   if(this.state.DB[id].Renewal.length>0) {
                var iStatus=[false]
                this.state.DB[id].Renewal.forEach((r, i) => {
-                  iStatus.push(r.IncreaseAmount)
+                  iStatus.push(true)
                });
 
-				   let period = p.Month/12
+				   let period = (p.Month-1)/11
 				   expected.push(this.state.DB[id].Rent*(Math.pow(1.05, iStatus[Math.floor(period)] ? Math.floor(period) : 0)));
+				   // - iStatus.slice(1,Math.floor(period)).filter(s => s===false).length
 			   }
 		   } else expected.push(this.state.DB[id].Rent);
 
@@ -102,16 +106,18 @@ if (Wave)
       Wave.forEach((item, i) => {
          sum+=item.Amount
       });
-
 	   return dueTotal-sum
    }
- totalWaiver=()=>{
-    var Wave,sum=0
+ getWaiver=(d)=>{
+    var Wave,sum=0, monthVal = 0
     Wave=this.state.DB[this.props.location.state.id]["Waiver"]
 if (Wave)
     Wave.forEach((item, i) => {
+		if(item.Date === d)
+			monthVal = item.Amount
       sum+=item.Amount
     });
+	if(d) return monthVal
     return sum
 }
    getRent = (m) => {
@@ -122,16 +128,24 @@ if (Wave)
       if(person.Renewal.length>0) {
          var iStatus=[false]
          person.Renewal.forEach((r, i) => {
-            iStatus.push(r.IncreaseAmount)
+            iStatus.push(true)
          });
 
-         let period = m ? m/12 : person["Paid_Rent"].length/12
-         rent = person.Rent*(Math.pow(1.05, iStatus[Math.floor(period)] ? Math.floor(period) : 0))
+         let period = m ? (m-1)/11 : (person["Paid_Rent"].length-1)/11
+         rent = person.Rent*(Math.pow(1.05, iStatus[Math.floor(period)] ? Math.floor(period): 0))
+		 //  - iStatus.slice(1,Math.floor(period)).filter(s => s===false).length
       }
     else rent = person.Rent
-
 }
+	if(m) rent -= this.getWaiver(person["Paid_Rent"][m-1].Date)
 		return rent
+   }
+
+   deleteHandler = (i) => {
+	   if(window.confirm("Delete this payment?")) {
+		   Firebase.database().ref( `${this.props.location.state.id}/Paid_Rent/${i}`).remove()
+		   this.setState({redirect: '/'})
+	   }
    }
 
 	render() {
@@ -149,7 +163,7 @@ if (Wave)
                <p><b>MR Code &nbsp;&nbsp;</b>{this.state.DB[this.props.location.state.id]["MR_Code"]}</p>
                <p><b>ID Proof &nbsp;&nbsp;</b>{this.state.DB[this.props.location.state.id]["ID"]}</p>
                <p><b>Advance &nbsp;&nbsp;</b>{this.state.DB[this.props.location.state.id]["Advance"]}</p>
-			      <p><b>Returnable Advance &nbsp;&nbsp;</b>{this.state.DB[this.props.location.state.id]["Advance"]-this.totalDeductable()-this.totalWaiver()}</p>
+			      <p><b>Returnable Advance &nbsp;&nbsp;</b>{this.state.DB[this.props.location.state.id]["Advance"]-this.totalDeductable()-this.getWaiver()}</p>
 			      <p><b>Rent Amount &nbsp;&nbsp;</b>{this.getRent()}</p>
                <p><b>Rent Due &nbsp;&nbsp;</b><span style={this.checkRent(this.props.location.state.id)!==0?{color:"red",fontWeight:'bold'}:{color:'#336914', fontWeight:'bold'}}>{this.checkRent(this.props.location.state.id)===-1?"No Data":this.checkRent(this.props.location.state.id)}</span></p>
 			   <br/><hr style={{width:'60%'}}/><br/>
@@ -168,11 +182,11 @@ if (Wave)
 
                </tr>:<tr><td></td><td></td><td></td><td>No Payments Yet</td><td></td><td></td><td></td></tr>}
                {  this.state.DB[this.props.location.state.id]["Paid_Rent"]?
-                  this.state.DB[this.props.location.state.id]["Paid_Rent"].map(p=>
+                  this.state.DB[this.props.location.state.id]["Paid_Rent"].map((p,i)=>
                   <tr>
                      <td  class="Tabledes">{moment(this.state.DB[this.props.location.state.id]["Start_Date"],"M/D/YY").add(p.Month-1 ,"M").format("MMM")}</td>
                      <td  class="Tabledes">{ moment(p.Date,"M/D/YY").format("D-MMM-YY")}</td>
-                     <td  class="Tabledes" style={p.Amount === this.getRent(p.Month) ? {color:'#336914', fontWeight:'bold'} : {color:'red', fontWeight:'bold'}}>{p.Amount?p.Amount:0}</td>
+                     <td  class="Tabledes" style={p.Amount === this.getRent(p.Month) ? {color:'#336914', fontWeight:'bold'} : {color:'red', fontWeight:'bold'}} onClick={() => this.deleteHandler(i)}>{p.Amount?p.Amount:0}</td>
                      <td class="Tabledes">{p.Others?p.Others:0}</td>
                      <td class="Tabledes">{parseInt(p.Amount?p.Amount:0)+parseInt(p.Others?p.Others:0)}</td>
                   </tr>
@@ -233,7 +247,7 @@ if (Wave)
 
 
             <div class="buttoncont">
-                     <div class="rect" onClick={() => this.AddPaymentRedirect()}style={{ backgroundColor: '#0057e0',color:"white",width:"46%"}}>
+                     <div class="rect" onClick={() => this.AddPaymentRedirect()}style={{ backgroundColor: '#0057e0',color:"white",width:"98%"}}>
           	 	     <i class="fa fa-plus" aria-hidden="true"></i></div>
                      {// div class="rect" onClick={() => this.setState({redirect:"/Edit"})}style={{ backgroundColor: '#7d7d7d',color:"white",width:"46%"}}>
                      // <i class="fa fa-pencil" aria-hidden="true"></i></div>

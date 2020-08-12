@@ -46,44 +46,58 @@ class Main extends React.Component {
 	}
 
 	checkRent = (id) => {
-		if(!this.state.DB[id]["Paid_Rent"])
-			return -1;
-		else if (this.state.DB[id]["Paid_Rent"].length<1) return -1;
+ 	   if(!this.state.DB[id]["Paid_Rent"])
+ 		   return -1;
+ 	   else if (this.state.DB[id]["Paid_Rent"].length<1) return -1;
 
-		let paid = this.state.DB[id]["Paid_Rent"].sort((a,b) => {return a.Month-b.Month})
-		let expected = [], due = [], dueTotal = 0;
+ 	   let paid = this.state.DB[id]["Paid_Rent"].sort((a,b) => {return a.Month-b.Month})
+ 	   let expected = [], due = [], dueTotal = 0;
 
-		paid.forEach((p,i) => {
-			if(this.state.DB[id].Renewal) {
-				if(this.state.DB[id].Renewal.length>0) {
-					let period = p.Month/11
-					if(period<=1) expected.push(this.state.DB[id].Rent);
-					else expected.push(this.state.DB[id].Rent*(1.05*Math.floor(period)));
-				}
-			} else expected.push(this.state.DB[id].Rent);
-			if(p.Month !== paid[0].Month+i) {
-				let diff = p.Month - paid[i-1].Month - 1;
+ 	   if(moment(paid.slice(-1)[0].Date,"M/D/YY").add(1,"M").isBefore(moment()))
+	   return 1
+ 	   paid.forEach((p,i) => {
+ 		   if(this.state.DB[id].Renewal) {
+ 			   if(this.state.DB[id].Renewal.length>0) {
+                var iStatus=[false]
+                this.state.DB[id].Renewal.forEach((r, i) => {
+                   iStatus.push(true)
+                });
 
-				for(let i=diff; i>0; i--) {
-					due.push({
-						month: p.Month-i,
-						amount: expected[i]
-					})
-					dueTotal += expected[i]
-				}
-			}
-			let due_i = expected[i]-p['Amount']
-			if(due_i!==0){
-				due.push({
-					month: p.Month,
-					date: p.Date,
-					amount: due_i
-				})
-				dueTotal += due_i
-			}
-		});
-		return dueTotal===0 ? 1 : 0
-	}
+ 				   let period = (p.Month-1)/11
+ 				   expected.push(this.state.DB[id].Rent*(Math.pow(1.05, iStatus[Math.floor(period)] ? Math.floor(period) : 0)));
+ 				   // - iStatus.slice(1,Math.floor(period)).filter(s => s===false).length
+ 			   }
+ 		   } else expected.push(this.state.DB[id].Rent);
+
+ 		   if(p.Month !== paid[0].Month+i) {
+ 			   let diff = p.Month - paid[i-1].Month - 1;
+
+ 			   for(let i=diff; i>0; i--) {
+ 				   due.push({
+ 					   month: p.Month-i,
+ 					   amount: expected[i]
+ 				   })
+ 				   dueTotal += expected[i]
+ 			   }
+ 		   }
+ 		   let due_i = expected[i]-p['Amount']
+ 		   if(due_i!==0){
+ 			   due.push({
+ 				   month: p.Month,
+ 				   date: p.Date,
+ 				   amount: due_i
+ 			   })
+ 			   dueTotal += due_i
+ 		   }
+ 	   });
+       var Wave,sum=0
+       Wave=this.state.DB[id]["Waiver"]
+ if (Wave)
+       Wave.forEach((item, i) => {
+          sum+=item.Amount
+       });
+ 	   return dueTotal-sum === 0 ? 2 : 0
+    }
 
 	rentColor=(id,type)=>{
 		switch(this.checkRent(id))
@@ -119,7 +133,7 @@ class Main extends React.Component {
 		return(
 		this.state.DB && <div class="container">
 		<div  class="App-header" as="h2" style={{ textAlign: "center", margin: 20 ,color:'white'}}>Rent Tracker</div>
-		<h2  style={{marginTop:'25%'}}>Rent: {moment().subtract(1, 'months').format("MMM")} - {moment().format("MMM")}</h2>
+		<h2  style={{marginTop:'25%'}}>Rent: {moment().format("MMMM")}</h2>
 		<div class="nameListWrapper">
 		<h4>Building #86</h4>
 		<div class="nameList">
@@ -166,7 +180,7 @@ class Main extends React.Component {
 		<div class="nameListWrapper">
 		{
 			Object.keys(this.state.DB).map(d => (
-				<p key={d}><b>{this.state.DB[d].Name}: </b>#{d.split("_")[0]}, {d.split('_')[1] === '0' ? 'G' : d.split('_')[1]}F<br/>
+				<p key={d}><b>{this.state.DB[d].Name}: </b> {d.split('_')[1] === '0' ? 'G' : d.split('_')[1]}F, #{d.split("_")[0]}<br/>
 
 				</p>
 			))
