@@ -106,3 +106,4 @@ dist
 Data/*
 build
 .DS_Store
+.firebase/*
