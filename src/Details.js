@@ -118,6 +118,7 @@ if (Wave)
       let person = this.state.DB[this.props.location.state.id]
 	   let rent = person.Rent
 
+      if(person.Renewal){
       if(person.Renewal.length>0) {
          var iStatus=[false]
          person.Renewal.forEach((r, i) => {
@@ -129,6 +130,8 @@ if (Wave)
       }
     else rent = person.Rent
 
+}
+console.log(rent);
 		return rent
    }
 
