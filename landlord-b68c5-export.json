@@ -1,0 +1,1078 @@
+{
+	"6_0_1": {
+		"Acc_ID": "542682679",
+		"Advance": 15000,
+		"ID": "3234  3564  9005",
+		"MR_Code": "14001870",
+		"Mobile": "8105684247",
+		"Months": 11,
+		"Name": "Narendra",
+		"Paid_Rent": [{
+			"Amount": 3500,
+			"Date": "2/2/19",
+			"Month": 1
+		}, {
+			"Amount": 3500,
+			"Date": "3/3/19",
+			"Month": 2
+		}, {
+			"Amount": 3500,
+			"Date": "4/4/19",
+			"Month": 3
+		}, {
+			"Amount": 3500,
+			"Date": "5/5/19",
+			"Month": 4
+		}, {
+			"Amount": 3500,
+			"Date": "6/6/19",
+			"Month": 5
+		}, {
+			"Amount": 3500,
+			"Date": "7/7/19",
+			"Month": 6
+		}, {
+			"Amount": 3500,
+			"Date": "8/8/19",
+			"Month": 7
+		}, {
+			"Amount": 3500,
+			"Date": "9/9/19",
+			"Month": 8
+		}, {
+			"Amount": 3500,
+			"Date": "10/10/19",
+			"Month": 9
+		}, {
+			"Amount": 3500,
+			"Date": "11/11/19",
+			"Month": 10
+		}, {
+			"Amount": 3500,
+			"Date": "12/12/19",
+			"Month": 11
+		}, {
+			"Amount": 3500,
+			"Date": "1/1/20",
+			"Month": 12
+		}, {
+			"Amount": 0,
+			"Date": "2/2/20",
+			"Month": 13
+		}, {
+			"Amount": 3675,
+			"Date": "3/3/20",
+			"Month": 14
+		}, {
+			"Amount": 3675,
+			"Date": "4/11/20",
+			"Month": 15
+		}, {
+			"Amount": 3675,
+			"Date": "5/12/20",
+			"Month": 16
+		}, {
+			"Amount": 3675,
+			"Date": "6/1/20",
+			"Month": 17
+		}, {
+			"Amount": 3675,
+			"Date": "7/2/20",
+			"Month": 18
+		}, {
+			"Amount": 3675,
+			"Date": "8/3/20",
+			"Month": 19
+		}],
+		"Renewal": [{
+			"Date": "1/1/20",
+			"Months": 11,
+			"IncreaseAmount":true
+		}],
+		"RR_No": "S10H 582623",
+		"Rent": 3500,
+		"Start_Date": "2/1/19"
+	},
+
+
+
+	"6_1_1": {
+		"Acc_ID": "542682679",
+		"Advance": 40000,
+		"ID": "BUIPR7407R",
+		"MR_Code": "14001870",
+		"Mobile": "8217078750",
+		"Months": 11,
+		"Name": "Rakesh Musale",
+		"Paid_Rent": [{
+			"Amount": 8000,
+			"Date": "8/11/18",
+			"Month": 1
+		}, {
+			"Amount": 8000,
+			"Date": "9/11/18",
+			"Month": 2
+		}, {
+			"Amount": 8000,
+			"Date": "10/11/18",
+			"Month": 3
+		}, {
+			"Amount": 8000,
+			"Date": "11/11/18",
+			"Month": 4
+		}, {
+			"Amount": 8000,
+			"Date": "12/11/18",
+			"Month": 5
+		}, {
+			"Amount": 8000,
+			"Date": "1/11/18",
+			"Month": 6
+		}, {
+			"Amount": 8000,
+			"Date": "2/11/18",
+			"Month": 7
+		}, {
+			"Amount": 8000,
+			"Date": "3/11/18",
+			"Month": 8
+		}, {
+			"Amount": 4000,
+			"Date": "4/11/18",
+			"Month": 9
+		}, {
+			"Amount": 8000,
+			"Date": "5/11/18",
+			"Month": 10
+		}, {
+			"Amount": 8000,
+			"Date": "6/11/18",
+			"Month": 11
+		}, {
+			"Amount": 8000,
+			"Date": "7/11/18",
+			"Month": 12
+		}, {
+			"Amount": 8000,
+			"Date": "8/11/18",
+			"Month": 13
+		}, {
+			"Amount": 8000,
+			"Date": "9/11/18",
+			"Month": 14
+		}, {
+			"Amount": 7000,
+			"Date": "10/11/18",
+			"Month": 15
+		}, {
+			"Amount": 7000,
+			"Date": "11/11/18",
+			"Month": 16
+		}, {
+			"Amount": 7000,
+			"Date": "12/11/18",
+			"Month": 17
+		}, {
+			"Amount": 7000,
+			"Date": "1/11/19",
+			"Month": 18
+		}, {
+			"Amount": 7000,
+			"Date": "2/11/19",
+			"Month": 19
+		}, {
+			"Amount": 7000,
+			"Date": "3/11/19",
+			"Month": 20
+		}, {
+			"Amount": 7000,
+			"Date": "4/11/19",
+			"Month": 21
+		}, {
+			"Amount": 7000,
+			"Date": "5/11/19",
+			"Month": 22
+		}, {
+			"Amount": 7000,
+			"Date": "6/11/19",
+			"Month": 23
+		}, {
+			"Amount": 7000,
+			"Date": "7/11/19",
+			"Month": 24
+		}, {
+			"Amount": 7000,
+			"Date": "8/11/19",
+			"Month": 25
+		}, {
+			"Amount": 7000,
+			"Date": "9/11/19",
+			"Month": 26
+		}, {
+			"Amount": 7000,
+			"Date": "10/11/19",
+			"Month": 27
+		}, {
+			"Amount": 7000,
+			"Date": "11/11/19",
+			"Month": 28
+		}, {
+			"Amount": 7000,
+			"Date": "12/11/19",
+			"Month": 29
+		}, {
+			"Amount": 7000,
+			"Date": "1/11/20",
+			"Month": 30
+		}, {
+			"Amount": 7000,
+			"Date": "2/11/20",
+			"Month": 31
+		}, {
+			"Amount": 7000,
+			"Date": "3/11/20",
+			"Month": 32
+		}, {
+			"Amount": 7000,
+			"Date": "4/11/20",
+			"Month": 33
+		}, {
+			"Amount": 7000,
+			"Date": "5/11/20",
+			"Month": 34
+		}, {
+			"Amount": 7000,
+			"Date": "6/11/20",
+			"Month": 35
+		}, {
+			"Amount": 8820,
+			"Date": "7/11/20",
+			"Month": 36
+		}, {
+			"Amount": 8820,
+			"Date": "8/11/20",
+			"Month": 37
+		}],
+		"Renewal": [{
+			"Date": "7/16/19",
+			"Months": 11,
+			"IncreaseAmount":false
+		},{
+			"Date": "7/16/20",
+			"Months": 11,
+			"IncreaseAmount":true
+			}],
+		"Waiver": [{
+			"Amount": 1000,
+			"Date": "10/12/18",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1000,
+			"Date": "11/12/18",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1000,
+			"Date": "12/12/18",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1000,
+			"Date": "1/12/19",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1000,
+			"Date": "2/12/19",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1000,
+			"Date": "3/12/19",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1000,
+			"Date": "4/12/19",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1000,
+			"Date": "5/12/19",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1000,
+			"Date": "6/12/19",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1000,
+			"Date": "7/12/19",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1000,
+			"Date": "8/12/19",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1000,
+			"Date": "9/12/19",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1000,
+			"Date": "10/12/19",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1000,
+			"Date": "11/12/19",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1000,
+			"Date": "12/12/19",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1000,
+			"Date": "1/12/20",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1000,
+			"Date": "2/12/20",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1000,
+			"Date": "3/12/20",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1000,
+			"Date": "4/12/20",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1000,
+			"Date": "5/12/20",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1000,
+			"Date": "6/12/20",
+			"Reason": "Reduce Advance"
+		}],
+		"RR_No": "S10H 582623",
+		"Rent": 8000,
+		"Start_Date": "8/15/18"
+	},
+
+
+
+	"6_2_1": {
+		"Acc_ID": "1099630903",
+		"Advance": 50000,
+		"RR_No":"0000",
+		"ID": "2978 6909 1705 ",
+		"MR_Code": "14001870",
+		"Mobile": "9739993953",
+		"Months": 11,
+		"Name": "Vasant Kumar",
+		"Paid_Rent": [{
+			"Amount": 8000,
+			"Date": "2/2/18",
+			"Month": 1
+		}, {
+			"Amount": 8000,
+			"Date": "3/3/18",
+			"Month": 2
+		}, {
+			"Amount": 8000,
+			"Date": "4/4/18",
+			"Month": 3
+		}, {
+			"Amount": 8000,
+			"Date": "5/5/18",
+			"Month": 4
+		}, {
+			"Amount": 8000,
+			"Date": "6/6/18",
+			"Month": 5
+		}, {
+			"Amount": 8000,
+			"Date": "7/7/18",
+			"Month": 6
+		}, {
+			"Amount": 8000,
+			"Date": "8/8/18",
+			"Month": 7
+		}, {
+			"Amount": 8000,
+			"Date": "9/11/18",
+			"Month": 8
+		}, {
+			"Amount": 8000,
+			"Date": "10/11/18",
+			"Month": 9
+		}, {
+			"Amount": 8000,
+			"Date": "11/11/18",
+			"Month": 10
+		}, {
+			"Amount": 8000,
+			"Date": "12/11/18",
+			"Month": 11
+		}, {
+			"Amount": 7000,
+			"Date": "1/11/19",
+			"Month": 12
+		}, {
+			"Amount": 7000,
+			"Date": "2/11/19",
+			"Month": 13
+		}, {
+			"Amount": 7000,
+			"Date": "3/11/19",
+			"Month": 14
+		}, {
+			"Amount": 7000,
+			"Date": "4/11/19",
+			"Month": 15
+		}, {
+			"Amount": 7000,
+			"Date": "5/11/19",
+			"Month": 16
+		}, {
+			"Amount": 7000,
+			"Date": "6/11/19",
+			"Month": 17
+		}, {
+			"Amount": 7000,
+			"Date": "7/11/19",
+			"Month": 18
+		}, {
+			"Amount": 7000,
+			"Date": "8/11/19",
+			"Month": 19
+		}, {
+			"Amount": 7000,
+			"Date": "9/11/19",
+			"Month": 20
+		}, {
+			"Amount": 7000,
+			"Date": "10/11/19",
+			"Month": 21
+		}, {
+			"Amount": 7000,
+			"Date": "11/11/19",
+			"Month": 22
+		}, {
+			"Amount": 7000,
+			"Date": "12/11/19",
+			"Month": 23
+		}, {
+			"Amount": 7000,
+			"Date": "1/11/20",
+			"Month": 24
+		}, {
+			"Amount": 7000,
+			"Date": "2/11/20",
+			"Month": 25
+		}, {
+			"Amount": 7000,
+			"Date": "3/11/20",
+			"Month": 26
+		}, {
+			"Amount": 7000,
+			"Date": "4/11/20",
+			"Month": 27
+		}, {
+			"Amount": 7000,
+			"Date": "5/11/20",
+			"Month": 28
+		}, {
+			"Amount": 7000,
+			"Date": "6/11/20",
+			"Month": 29
+		}, {
+			"Amount": 7000,
+			"Date": "7/11/20",
+			"Month": 30
+		}, {
+			"Amount": 7000,
+			"Date": "8/11/20",
+			"Month": 31
+		}],
+		"Renewal": [{
+			"Date": "1/15/20",
+			"Months": 32,
+			"IncreaseAmount":false
+		}, {
+			"Date": "11/13/20",
+			"Months": 33,
+			"IncreaseAmount":false
+		}],
+		"Waiver": [ {
+			"Amount": 1000,
+			"Date": "1/12/19",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1000,
+			"Date": "2/12/19",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1000,
+			"Date": "3/12/19",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1000,
+			"Date": "4/12/19",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1000,
+			"Date": "5/12/19",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1000,
+			"Date": "6/12/19",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1000,
+			"Date": "7/12/19",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1000,
+			"Date": "8/12/19",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1000,
+			"Date": "9/12/19",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1000,
+			"Date": "10/12/19",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1000,
+			"Date": "11/12/19",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1000,
+			"Date": "12/12/19",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1000,
+			"Date": "1/12/20",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1000,
+			"Date": "2/12/20",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1000,
+			"Date": "3/12/20",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1000,
+			"Date": "4/12/20",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1000,
+			"Date": "5/12/20",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1000,
+			"Date": "6/12/20",
+			"Reason": "Reduce Advance"
+		},{
+			"Amount": 1000,
+			"Date": "7/12/20",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1000,
+			"Date": "8/12/20",
+			"Reason": "Reduce Advance"
+		}],
+		"Rent": 8000,
+		"Start_Date": "2/16/18"
+	},
+
+
+
+	"86_0_1": {
+		"Acc_ID": "6092970175",
+		"Advance": 40000,
+		"BBMP": 60,
+		"Building": "86",
+		"Door": "1",
+		"Floor": "0",
+		"Head_Count": 1,
+		"ID": "86_0_1",
+		"MR_Code": "14012265",
+		"Mobile": "9964024438",
+		"Months": 11,
+		"Name": "Dixson Pius Dcosta",
+		"Paid_Rent": [{
+			"Amount": 12000,
+			"Date": "8/10/19",
+			"Month": 1,
+			"Others": "856"
+		}, {
+			"Amount": 12000,
+			"Date": "9/10/19",
+			"Month": 2,
+			"Others": "610"
+		}, {
+			"Amount": 12000,
+			"Date": "10/10/19",
+			"Month": 3,
+			"Others": "655"
+		}, {
+			"Amount": 12000,
+			"Date": "11/10/19",
+			"Month": 4,
+			"Others": "646"
+		}, {
+			"Amount": 12000,
+			"Date": "12/10/19",
+			"Month": 5,
+			"Others": "645"
+		}, {
+			"Amount": 12000,
+			"Date": "1/10/20",
+			"Month": 6,
+			"Others": "645"
+		}, {
+			"Amount": 10500,
+			"Date": "2/10/20",
+			"Month": 7,
+			"Others": "1345"
+		}, {
+			"Amount": 10500,
+			"Date": "3/10/20",
+			"Month": 8,
+			"Others": "645"
+		}, {
+			"Amount": 10500,
+			"Date": "4/10/20",
+			"Month": 9,
+			"Others": "660"
+		}, {
+			"Amount": 10500,
+			"Date": "5/10/20",
+			"Month": 10,
+			"Others": "660"
+		}, {
+			"Amount": 10500,
+			"Date": "6/10/20",
+			"Month": 11,
+			"Others": "660"
+		}, {
+			"Amount": 10500,
+			"Date": "7/10/20",
+			"Month": 12,
+			"Others": "660"
+		}, {
+			"Amount": 10500,
+			"Date": "8/10/20",
+			"Month": 13,
+			"Others": "660"
+		}],
+		"Waiver": [{
+			"Amount": 1500,
+			"Date": "2/12/20",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1500,
+			"Date": "3/12/20",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1500,
+			"Date": "4/12/20",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1500,
+			"Date": "5/12/20",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1500,
+			"Date": "6/12/20",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1500,
+			"Date": "7/12/20",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 1500,
+			"Date": "8/12/20",
+			"Reason": "Reduce Advance"
+		}],
+		"RR_No": "S10H 58947",
+		"Rent": 12000,
+		"StartDate": "2019-08-01",
+		"Start_Date": "8/1/19"
+	},
+
+
+
+	"86_1_1": {
+		"Acc_ID": "5980175948",
+		"Advance": 40000,
+		"BBMP": 60,
+		"Building": "86",
+		"Door": "1",
+		"Floor": "1",
+		"Head_Count": 1,
+		"ID": "0000",
+		"MR_Code": "14012265",
+		"Mobile": "9916630643",
+		"Paid_Rent": [{
+			"Amount": 12000,
+			"Date": "8/11/19",
+			"Month": 1
+		}, {
+			"Amount": 12000,
+			"Date": "9/11/19",
+			"Month": 2
+		}, {
+			"Amount": 12000,
+			"Date": "10/11/19",
+			"Month": 3
+		}, {
+			"Amount": 12000,
+			"Date": "11/11/19",
+			"Month": 4
+		}, {
+			"Amount": 12000,
+			"Date": "12/11/19",
+			"Month": 5
+		}, {
+			"Amount": 12000,
+			"Date": "1/11/20",
+			"Month": 6
+		}, {
+			"Amount": 12000,
+			"Date": "2/11/20",
+			"Month": 7
+		}, {
+			"Amount": 12000,
+			"Date": "3/11/20",
+			"Month": 8
+		}, {
+			"Amount": 12000,
+			"Date": "4/11/20",
+			"Month": 9
+		}, {
+			"Amount": 12000,
+			"Date": "5/11/20",
+			"Month": 10
+		}, {
+			"Amount": 12000,
+			"Date": "6/11/20",
+			"Month": 11
+		}, {
+			"Amount": 12000,
+			"Date": "7/11/20",
+			"Month": 12
+		}, {
+			"Amount": 12000,
+			"Date": "8/11/20",
+			"Month": 13
+		}],
+		"Months": 11,
+		"Name": "Arshia Niazi Bidgoli",
+		"RR_No": "S10H 58948",
+		"Rent": "12000",
+		"StartDate": "2019-08-01",
+		"Start_Date": "8/1/19"
+	},
+
+
+
+	"86_1_2": {
+		"Acc_ID": "7737784166",
+		"Advance": 40000,
+		"Head_Count": 2,
+		"ID": "5147 2736 2994",
+		"MR_Code": "14012265",
+		"Mobile": "8904186310",
+		"Months": 11,
+		"Name": "Sri Krishna KS ",
+		"Nickname": "Krishna",
+		"Paid_Rent": [{
+			"Amount": 12000,
+			"Date": "12/12/19",
+			"Month": 1
+		}, {
+			"Amount": 12000,
+			"Date": "1/1/20",
+			"Month": 2
+		}, {
+			"Amount": 10000,
+			"Date": "2/2/20",
+			"Month": 3
+		}, {
+			"Amount": 10000,
+			"Date": "3/3/20",
+			"Month": 4
+		}, {
+			"Amount": 10000,
+			"Date": "4/11/20",
+			"Month": 5
+		}, {
+			"Amount": 10000,
+			"Date": "5/12/20",
+			"Month": 6
+		}, {
+			"Amount": 10000,
+			"Date": "6/1/20",
+			"Month": 7
+		}, {
+			"Amount": 10000,
+			"Date": "7/2/20",
+			"Month": 8
+		}, {
+			"Amount": 10000,
+			"Date": "8/3/20",
+			"Month": 9
+		}],
+		"Waiver": [{
+			"Amount": 2000,
+			"Date": "2/12/20",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 2000,
+			"Date": "3/12/20",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 2000,
+			"Date": "4/12/20",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 2000,
+			"Date": "5/12/20",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 2000,
+			"Date": "6/12/20",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 2000,
+			"Date": "7/12/20",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 2000,
+			"Date": "8/12/20",
+			"Reason": "Reduce Advance"
+		}],
+		"RR_No": "S10H 58949",
+		"Rent": 12000,
+		"Start_Date": "12/15/19"
+	},
+
+
+
+	"86_1_3": {
+		"Acc_ID": "6092970175",
+		"Advance": "15000",
+		"BBMP": 60,
+		"Building": "86",
+		"Door": "3",
+		"Floor": "1",
+		"Head_Count": 1,
+		"ID": "86_1_3",
+		"MR_Code": "14012265",
+		"Mobile": "9538917728",
+		"Months": 11,
+		"Name": "Mutta Suresh",
+		"Nickname": "Suresh",
+		"Paid_Rent": [{
+			"Amount": 5000,
+			"Date": "2/5/20",
+			"Month": 1
+		}, {
+			"Amount": 5000,
+			"Date": "3/11/20",
+			"Month": 2
+		}, {
+			"Amount": 5000,
+			"Date": "4/11/20",
+			"Month": 3
+		}, {
+			"Amount": 5000,
+			"Date": "5/11/20",
+			"Month": 4
+		}, {
+			"Amount": 5000,
+			"Date": "6/11/20",
+			"Month": 5
+		}, {
+			"Amount": 5000,
+			"Date": "7/11/20",
+			"Month": 6
+		}, {
+			"Amount": 5000,
+			"Date": "8/11/20",
+			"Month": 7
+		}],
+		"RR_No": "S10H 58947",
+		"Rent": "5000",
+		"StartDate": "2020-02-01",
+		"Start_Date": "2/1/20"
+	},
+
+
+
+	"86_3_1": {
+		"Acc_ID": "8747925154",
+		"Advance": 40000,
+		"Building": "86",
+		"Door": "1",
+		"Floor": "3",
+		"Head_Count": 2,
+		"ID": "0000",
+		"MR_Code": "14012265",
+		"Mobile": "66402323",
+		"Months": 11,
+		"Name": "Shashi Kant",
+		"Nickname": "Shashikant",
+		"Paid_Rent": [{
+			"Amount": 9000,
+			"Date": "11/11/18",
+			"Month": 1
+		}, {
+			"Amount": 9000,
+			"Date": "12/11/18",
+			"Month": 2
+		}, {
+			"Amount": 9000,
+			"Date": "1/11/19",
+			"Month": 3
+		}, {
+			"Amount": 9000,
+			"Date": "2/11/19",
+			"Month": 4
+		}, {
+			"Amount": 9000,
+			"Date": "3/11/19",
+			"Month": 5
+		}, {
+			"Amount": 7000,
+			"Date": "4/11/19",
+			"Month": 6
+		}, {
+			"Amount": 7000,
+			"Date": "5/11/19",
+			"Month": 7
+		}, {
+			"Amount": 7000,
+			"Date": "6/11/19",
+			"Month": 8
+		}, {
+			"Amount": 7000,
+			"Date": "7/11/19",
+			"Month": 9
+		}, {
+			"Amount": 7000,
+			"Date": "8/11/19",
+			"Month": 10
+		}, {
+			"Amount": 7000,
+			"Date": "9/11/19",
+			"Month": 11
+		}, {
+			"Amount": 7000,
+			"Date": "10/11/19",
+			"Month": 12
+		}, {
+			"Amount": 7000,
+			"Date": "11/11/19",
+			"Month": 13
+		}, {
+			"Amount": 7000,
+			"Date": "12/11/19",
+			"Month": 14
+		}, {
+			"Amount": 7000,
+			"Date": "1/11/20",
+			"Month": 15
+		}, {
+			"Amount": 7000,
+			"Date": "2/11/20",
+			"Month": 16
+		}, {
+			"Amount": 7000,
+			"Date": "3/11/20",
+			"Month": 17
+		}, {
+			"Amount": 7000,
+			"Date": "4/11/20",
+			"Month": 18
+		}, {
+			"Amount": 9000,
+			"Date": "5/11/20",
+			"Month": 19
+		}, {
+			"Amount": 9000,
+			"Date": "6/11/20",
+			"Month": 20
+		}, {
+			"Amount": 9000,
+			"Date": "7/11/20",
+			"Month": 21
+		}, {
+			"Amount": 9000,
+			"Date": "8/11/20",
+			"Month": 22
+		}],
+		"Renewal": [{
+			"Date": "10/1/19",
+			"Months": 23,
+			"IncreaseAmount":false
+		}],
+		"RR_No": "S10H 78399",
+		"Rent": 9000,
+		"StartDate": "2020-08-10",
+		"Start_Date": "11/1/18",
+		"Waiver": [{
+			"Amount": 2000,
+			"Date": "4/12/19",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 2000,
+			"Date": "5/12/19",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 2000,
+			"Date": "6/12/19",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 2000,
+			"Date": "7/12/19",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 2000,
+			"Date": "8/12/19",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 2000,
+			"Date": "9/12/19",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 2000,
+			"Date": "10/12/19",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 2000,
+			"Date": "11/12/19",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 2000,
+			"Date": "12/12/19",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 2000,
+			"Date": "1/12/20",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 2000,
+			"Date": "2/12/20",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 2000,
+			"Date": "3/12/20",
+			"Reason": "Reduce Advance"
+		}, {
+			"Amount": 2000,
+			"Date": "4/12/20",
+			"Reason": "Reduce Advance"
+		}]
+	}
+
+
+}
